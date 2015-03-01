@@ -1,0 +1,331 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color: white;
+    /*background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);*/
+    /*background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );*/
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding: 0px;
+    text-transform:uppercase;
+    width:100%;
+}
+
+/* Portrait layout (default) */
+.app {
+    /*background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+.content
+{
+    margin: 80px auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*
+.home-buttons
+{
+    background-color: #008eab;
+    border-color: #008eab;
+    width: 80%;
+    height: 50px;
+   margin-left: 10%;
+}
+*/
+
+.home-buttons
+{
+    background: #f1f2f3;
+    background-image: -webkit-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -moz-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -ms-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -o-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: linear-gradient(to bottom, #f1f2f3, #d5d7d9);
+    -webkit-border-radius: 22;
+    -moz-border-radius: 22;
+    border-radius: 22px;
+    text-shadow: 0px 0px 2px #057c91;
+    font-family: Georgia;
+    color: #057c91;
+    font-size: 25px;
+    padding: 10px 20px 10px 20px;
+    border: solid #e4e7eb 2px;
+    text-decoration: none;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 11%;
+}
+/*----------------jquery menu css---------------------------*/
+.button-nav-toggle {
+    font-size: 1.3em;
+    float: right;
+    border: 0;
+    background: 0 0;
+    color: #000;
+    outline: 0;
+    cursor: pointer
+}
+
+.nav-main {
+    transition: right .25s ease-in-out;
+    background: #f1f2f3;
+    position: fixed;
+    overflow-x: hidden;
+    width: 280px;
+    right: -280px;
+    top: 0;
+    bottom: 0
+}
+
+.nav-main .nav-container {
+    transition: left .25s ease-in-out;
+    position: relative;
+    left: 0
+}
+
+.nav-main .nav-container.show-sub { left: -280px }
+
+.nav-main .nav-container ul {
+    margin: 0;
+    padding: 0 20px
+}
+
+.nav-main .nav-container ul li {
+    list-style: none;
+    border-bottom: 1px solid #d5d7da
+}
+
+.nav-main .nav-container ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 20px 0;
+    color: #4d5152;
+    font-size: 16px
+}
+
+.nav-main .nav-container ul li a:hover { color: #4d5152 }
+
+.nav-main .nav-container ul li ul {
+    display: none;
+    width: 280px;
+    position: absolute;
+    right: -280px;
+    top: 0
+}
+
+.nav-main .nav-container ul li ul li { border: 0 }
+
+.nav-main .nav-container ul li ul li.nav-label {
+    border-top: 1px solid #d5d7da;
+    padding: 25px 0 10px
+}
+
+.nav-main .nav-container ul li ul li a {
+    padding: 7px 0 15px;
+    font-size: 14px
+}
+
+.nav-main .nav-container ul li ul li a.back {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 20px 25px;
+    background: url(img/arrow-left.png) left center no-repeat
+}
+
+.nav-main .nav-container ul li.has-sub-nav a { background: url(img/arrow-right.png) right center no-repeat }
+
+.nav-main .nav-container ul li.has-sub-nav ul a { background: 0 0 }
+
+.nav-main .nav-container ul li.active ul { display: block }
+
+.open .nav-main { right: 0 }
+
+*,
+:after,
+:before { box-sizing: border-box }
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: sans-serif;
+    line-height: 1.6em;
+    color: #222;
+    margin: 0;
+}
+
+.page-wrapper {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.header-main {
+    transition: right .25s ease-in-out;
+    position: relative;
+    
+    
+    overflow: hidden;
+    padding: 1px;
+    background-color: white;
+    border-bottom: solid;
+    border-width: 0.5px;
+    border-color: #f1f2f3;
+    height: 55px;
+}
+
+
+.header-main.open { right: 280px }
+
+#header-wrapper
+{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    
+    
+}
+
+
+
+.section-stage {
+    background: #202020;
+    width: 100%;
+    height: 500px
+}
+
+.main {
+    transition: right .25s ease-in-out;
+    position: relative;
+    right: 0;
+}
+
+.main.open { right: 280px }
+
+
+
+
+.footer {
+    transition: right .25s ease-in-out;
+    position: relative;
+    right: 0;
+    
+    overflow: hidden;
+   
+    background-color: white;
+    border-top: solid;
+    border-width: 0.5px;
+    border-color: #f1f2f3;
+    height: 8%;
+}
+
+.footer.open { right: 280px }
+
+#wrapper
+{
+    position: fixed;
+    top: 93%;
+    width: 100%;
+    
+   
+}
