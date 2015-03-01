@@ -123,16 +123,6 @@ a {
     text-decoration: none;
 }
 
-/*
-.home-buttons
-{
-    background-color: #008eab;
-    border-color: #008eab;
-    width: 80%;
-    height: 50px;
-   margin-left: 10%;
-}
-*/
 
 .home-buttons
 {
@@ -156,6 +146,28 @@ a {
     margin-left: 10%;
     margin-top: 11%;
 }
+
+
+/* social networks */
+.socialNet {
+    transition: right .25s ease-in-out;
+    position: relative;
+    right: 0;
+    
+    overflow: hidden;
+}
+
+.socialNet.open { right: 280px }
+
+.socialNet-wrapper /* social network links wrapper*/
+{
+    position: fixed;
+    left: 33%;
+    top: 85%;
+}
+
+
+
 /*----------------jquery menu css---------------------------*/
 .button-nav-toggle {
     font-size: 1.3em;
