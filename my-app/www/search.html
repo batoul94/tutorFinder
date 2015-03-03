@@ -45,48 +45,44 @@
         <div class="content">
             
             <h1>Search Tutor</h1>
-            
-            <div id="map-canvas"></div>
 
-            <form  id="thisform">
-               
-             <input type="text"  id="inputTextAddress" placeholder="Post Code"/><br />
-         
-             <input type="text"  id="subject" placeholder="Subject"/><br />
-
-            <select id="level">
-              <option value="any">Level</option>
-              <option  value="1" >1</option>
-              <option  value="2" >2</option>
-              <option  value="3" >3</option>
-            </select><br />
-
-            <select id="price">
-              <option value="any">Price per session</option>
-              <option value="10" >Less than 10</option>
-              <option  value="20" >Less than 20</option>
-              <option  value="30" >Less than 30</option>
-            </select><br />
-
-            <select id="radius">
-              <option  value="any">Within radius of</option>
-              <option  value="1" >1km</option>
-              <option  value="200" >200km</option>
-              <option  value="30000" >30000km</option>
-            </select><br />
-
-            </form>
+             <form  id="thisform">
+                 <input type="text"  id="inputTextAddress" placeholder="Post Code"/><br />
+                 <input type="text"  id="subject" placeholder="Subject"/><br />
+                  <select id="level">
+                    <option value="any">Level</option>
+                    <option  value="1" >1</option>
+                    <option  value="2" >2</option>
+                    <option  value="3" >3</option>
+                  </select><br />
+                  <select id="price">
+                    <option value="any">Price per session</option>
+                    <option value="10" >Less than 10</option>
+                    <option  value="20" >Less than 20</option>
+                    <option  value="30" >Less than 30</option>
+                  </select><br />
+                  <select id="radius">
+                    <option  value="any">Within radius of</option>
+                    <option  value="1" >1km</option>
+                    <option  value="200" >200km</option>
+                    <option  value="30000" >30000km</option>
+                  </select><br />
+              </form><br>
+     
+              <div id="map-canvas"></div>
            
          
          
         </div>
-           <script>
+      <script>
+      var markersmap = [];
+      var markers = [];   
 
-var markersmap = [];
-var markers = [];   
-
-      var mycenter = new google.maps.LatLng(-25.363882,131.044922); //centre is currently in australia
+      var mycenter = new google.maps.LatLng(51.496066, -0.161019); //centre is currently in central london
       var geocoder;
+      var markerIcon = ["img/markericon3.png"];  
+      var marker1;
+      var marker2;
 
       var mapOptions = {
             zoom: 10,
@@ -95,118 +91,125 @@ var markers = [];
           }
 
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
+     
              //uses the users' current location
                 if (navigator.geolocation) {
                    navigator.geolocation.getCurrentPosition(function (position) {
                      initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                        map.setCenter(initialLocation);
                        mycenter = initialLocation;
-                       //console.log(initialLocation);
+                       marker1 = new google.maps.Marker({
+                                         map: map,
+                                         position: mycenter,
+                                         icon: markerIcon[0]
+                                       }); 
                    });
                 }
 
 
-function initializeme() {
+      function initializeme() {
 
-      geocoder = new google.maps.Geocoder();
-         
-      $.ajax({
-        url: 'http://localhost:8888/ajax.php',
-        dataType: 'json',
-        success: function(data){
-          $.each(data, function(data, res){
-            markers.push(res);
-          });
+            geocoder = new google.maps.Geocoder();
+               
+            $.ajax({
+              url: 'http://localhost:8888/ajax.php',
+              dataType: 'json',
+              success: function(data){
+                        $.each(data, function(data, res){
+                              markers.push(res);
+                        });
 
-          //console.log(markers[0]);
-
-              $.each(markers, function(i, m) {
-                                      markersmap[i] = new google.maps.Marker({
-                                      position: new google.maps.LatLng(m.lng,m.lat),
-                                      map: map
-                                      }); 
-                                      var contentString ="Name: "+markers[i].name+"<br />Subject: " + markers[i].subject+"<br />Rating: " + markers[i].stars;
-                                      var infowindow = new google.maps.InfoWindow({
-                                             content: contentString
-                                           });
-                                      google.maps.event.addListener(markersmap[i], 'click', function() {
-                                              infowindow.open(map,markersmap[i]);
-                                           });
-                               });
-                  //console.log(map.getCenter());
-         
-                
-            }
-      }); //end of ajax call
+                        $.each(markers, function(i, m) {
+                                                markersmap[i] = new google.maps.Marker({
+                                                position: new google.maps.LatLng(m.lng,m.lat),
+                                                map: map
+                                                }); 
+                                                var contentString ="Name: "+markers[i].name+"<br />Subject: " + markers[i].subject+"<br />Rating: " + markers[i].stars +"<br /><a href='about.html'>Tutor Profile</a>";
+                                                var infowindow = new google.maps.InfoWindow({
+                                                       content: contentString
+                                                     });
+                                                google.maps.event.addListener(markersmap[i], 'click', function() {
+                                                        infowindow.open(map,markersmap[i]);
+                                                     });
+                                         });
+                          
+                   
+                          
+                      }
+            }); //end of ajax call
 
 
-}
+      }
 
 
-google.maps.event.addDomListener(window, 'load', initializeme);
 
-$("#thisform").bind( "change", function() 
-{       ///////
-        sAddress = document.getElementById("inputTextAddress").value;
-   geocoder.geocode({ 'address': sAddress }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              var geoAddress = results[0].geometry.location;
-                  mycenter = geoAddress;
-              map.setCenter(geoAddress);
-             /* this is for setting a marker at address
-              var marker = new google.maps.Marker({
-              map: map,
-              position: geoAddress});*/
+        google.maps.event.addDomListener(window, 'load', initializeme);
+          
+      
+        $("#thisform").bind( "change", function() 
+        {       ///////
+                 sAddress = document.getElementById("inputTextAddress").value;
+                 geocoder.geocode({ 'address': sAddress }, function(results, status) {
+                          if (status == google.maps.GeocoderStatus.OK) {
+                            var geoAddress = results[0].geometry.location;
+                                mycenter = geoAddress;
+                                map.setCenter(geoAddress);
+                                marker2 = new google.maps.Marker({
+                                         map: map,
+                                         position: mycenter,
+                                         icon: markerIcon[0]
+                                       }); 
+                                marker1.setVisible(false);
 
-            }else{  // the users' current location will be used
-                      geoAddress = initialLocation;
-                            mycenter = geoAddress;
-                            map.setCenter(geoAddress);
-                            $("#inputTextAddress").val('Current Location');
-              //alert("Geocode wasnt successful for the following reason: "+status);
-            }
+                          }else{  // the users' current location will be used
+                                    geoAddress = initialLocation;
+                                          mycenter = geoAddress;
+                                          map.setCenter(geoAddress);
+                                          $("#inputTextAddress").val('Current Location');
+                                          marker1.setVisible(true);
+                                           
+                              //alert("Geocode wasnt successful for the following reason: "+status);
+                           }
+                      });
+                ///////
+
+               $.each(markers, function(index, m) 
+               {  
+                               var targetLoc = new google.maps.LatLng(markers[index].lng,markers[index].lat);
+                               var distanceInkm = google.maps.geometry.spherical.computeDistanceBetween(mycenter,targetLoc)/1000; 
+                               console.log(distanceInkm); 
+
+                               var radiusVal = $("#radius option:selected").val();
+                               var priceVal = $("#price option:selected").val();
+                               var levelVal = $("#level option:selected").val();
+                               var subjectVal=  $("#subject").val().toLowerCase(); // converts the input value to lowercase
+                                 if(  
+                                      (
+                                      (radiusVal > distanceInkm) || (radiusVal=== 'any')
+                                      ) &&
+                                      (
+                                      (priceVal >= m.price) || (priceVal === 'any')
+                                      )&&
+                                      (
+                                      (levelVal === m.level) || (levelVal=== 'any')
+                                      ) &&
+                                      (
+                                      ($.inArray(subjectVal,m.subject)>-1) || (subjectVal === '')
+                                      )
+                                   )
+                                  {    console.log(markers[index]);
+                                      markersmap[index].setVisible(true);
+                                  } 
+                                  else
+                                  {
+                                      markersmap[index].setVisible(false);
+                                  }
+                        
+
+              })  
         });
-        ///////
 
-       $.each(markers, function(index, m) 
-       {  
-                      var targetLoc = new google.maps.LatLng(markers[index].lng,markers[index].lat);
-                       var distanceInkm = google.maps.geometry.spherical.computeDistanceBetween(mycenter,targetLoc)/1000; 
-                      console.log(distanceInkm); 
-
-                       var radiusVal = $("#radius option:selected").val();
-                       var priceVal = $("#price option:selected").val();
-                       var levelVal = $("#level option:selected").val();
-                       /*var subjectVal = $("#subject option:selected").val();*/
-                         var subjectVal=  $("#subject").val();
-                         if(  
-                              (
-                              (radiusVal > distanceInkm) || (radiusVal=== 'any')
-                              ) &&
-                              (
-                              (priceVal >= m.price) || (priceVal === 'any')
-                              )&&
-                              (
-                              (levelVal === m.level) || (levelVal=== 'any')
-                              ) &&
-                              (
-                              ($.inArray(subjectVal,m.subject)>-1) || (subjectVal === '')
-                              )
-                           )
-                          {    console.log(markers[index]);
-                              markersmap[index].setVisible(true);
-                          } 
-                          else
-                          {
-                              markersmap[index].setVisible(false);
-                          }
-                
-
-      })  
-});
-
-
+  
 </script>    
     
         <!--Footer-->
