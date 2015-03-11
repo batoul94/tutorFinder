@@ -25,6 +25,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#FFFFFF"/>
+    <preference name="DisallowOverscroll" value="true" />
     
     <preference name="StatusBarStyle" value="default" />
     <gap:plugin name="org.apache.cordova.battery-status" />
