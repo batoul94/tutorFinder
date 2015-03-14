@@ -47,13 +47,50 @@
             <h1>Log In</h1>
             
             <form id="loginForm">
-                
-                
                 <input type="text" name="email" placeholder="Email" id="email"/> <br>
                 <input type="text" name="password" placeholder="Password" id="password"/> <br>
+                <div id="error"></div>
                 <input type="submit" value="Login" id="btnLogin">
-         
-         </form>
+           </form>
+
+                  <script>
+
+         $(document).ready(function() {
+
+             $('#loginForm').submit(function(e){
+
+                        e.preventDefault();
+
+                        var email=  $("#email").val(); 
+                        var password=  $("#password").val(); 
+                        var dataString = 'email='+email+'&password='+password;
+
+                         if(($.trim(email).length>0) && ($.trim(password).length>0) )
+                            {
+                                 $.ajax({
+                                      type: "POST",
+                                      url: 'http://localhost:8888/loginAjaxParent.php',
+                                      data: dataString,
+                                      success: function(data){
+                                                        window.location.href = "search.html";
+                                              }
+                                    }); //end of ajax call
+                                              
+                         }else{
+                             $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid details entered. ");
+                         }
+
+                        
+
+
+               });
+
+
+
+
+         });
+
+         </script>
          
          
         </div>
