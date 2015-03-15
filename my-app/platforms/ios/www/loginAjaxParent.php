@@ -14,7 +14,7 @@
 
         if($count==1) {
 
-            $_SESSION['login_user']=$row['firstname'];
+            $_SESSION['login_parent']=$row['id'];
             echo $row['firstname'];
             //header("location: profile.php");
 
