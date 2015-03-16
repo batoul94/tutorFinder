@@ -22,8 +22,9 @@
    $email = $_POST['email'];
    $password = $_POST['password'];
 
-   $lat = $_POST['lat'];
    $lng = $_POST['lng'];
+   $lat = $_POST['lat'];
+  
 
 
 

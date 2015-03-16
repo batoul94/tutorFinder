@@ -1,7 +1,5 @@
 CREATE DATABASE tutorfinder;
 
-
-
 CREATE TABLE markersdata (
   id       int not null auto_increment,
   lng      float(10,6),
