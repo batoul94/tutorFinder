@@ -88,7 +88,12 @@
                                       url: 'http://localhost:8888/ajaxCalls/registerAjaxParent.php',
                                       data: dataString,
                                       success: function(data){
-                                                        window.location.href = "login.html";
+                                                        
+                                                        if(data) {
+                                                        $("#error").html("<span style='color:#cc0000'>Error:</span>Your details didn't register! ");
+                                                        } else {
+                                                            window.location.href = "login.html";
+                                                         }
                                               }
                                     }); //end of ajax call
                                               
