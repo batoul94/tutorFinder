@@ -46,15 +46,25 @@
                 <FORM METHOD="LINK" ACTION="search.html">
                     <INPUT class="home-buttons" TYPE="submit" VALUE="Search Tutor">
                 </FORM>
-               
+               <!--
                <FORM METHOD="LINK" ACTION="login.html">
                    <INPUT class="home-buttons" TYPE="submit" VALUE="Log In">
                        </FORM>
                
-               <!--
+               
                <FORM METHOD="LINK" ACTION="register.html">
                    <INPUT class="home-buttons" TYPE="submit" VALUE="Register">
                       -->
+               
+               
+               <select id="loginButton" class="home-buttons" onchange="myFunction()">
+                   <option value="" disabled selected>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Login</option>
+                   <option value="parent">Parent</option>
+                   <option value="tutor">Tutor</option>
+                   
+               </select>
+               
+               
                        <select id="registerButton" class="home-buttons" onchange="myFunction()">
                            <option value="" disabled selected>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Register</option>
                            <option value="parent">Parent</option>
@@ -104,6 +114,7 @@
         <script>
             function myFunction() {
                 var x = document.getElementById("registerButton").value;
+                var s = document.getElementById("loginButton").value;
                 if(x == "parent")
                 {
                     
@@ -113,10 +124,23 @@
                 else if (x == "tutor")
                 {
                     
-                    window.open("about.html");
+                    window.open("registerTutor.html");
                     
+                }
+                else if(s == "parent")
+                {
+                    
+                    window.open("login.html");
+                    
+                }
+                else if (s == "tutor")
+                {
+                    
+                    window.open("loginTutor.html");
                 }
             }
         </script>
+        
+        
     </body>
 </html>

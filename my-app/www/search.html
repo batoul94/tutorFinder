@@ -112,7 +112,7 @@
             geocoder = new google.maps.Geocoder();
                
             $.ajax({
-              url: 'http://localhost:8888/ajax.php',
+              url: 'http://localhost:8888/ajaxCalls/ajax.php',
               dataType: 'json',
               success: function(data){
                         $.each(data, function(data, res){
