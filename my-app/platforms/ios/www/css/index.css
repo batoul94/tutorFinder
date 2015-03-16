@@ -349,7 +349,11 @@ body {
 
 }
 
+<<<<<<< HEAD
 #inputTextAddress, #subject,#email, #password{
+=======
+ #inputTextAddress, #subject, #level{
+>>>>>>> 7f5330d351f9ae6be87d17c73ae54689e1bf9688
    width:95.5%;
    height:25px;
    margin-top:5px;

@@ -71,10 +71,14 @@
                             {
                                  $.ajax({
                                       type: "POST",
-                                      url: 'http://localhost:8888/loginAjaxParent.php',
+                                      url: 'http://localhost:8888/ajaxCalls/loginAjaxParent.php',
                                       data: dataString,
                                       success: function(data){
-                                                        window.location.href = "search.html";
+                                                          if(data) {
+                                                            window.location.href = "search.html";
+                                                        } else {
+                                                            $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid email and password. ");
+                                                        }
                                               }
                                     }); //end of ajax call
                                               
