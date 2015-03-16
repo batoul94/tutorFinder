@@ -49,12 +49,13 @@
              <form  id="thisform">
                  <input type="text"  id="inputTextAddress" placeholder="Post Code"/><br />
                  <input type="text"  id="subject" placeholder="Subject"/><br />
-                  <select id="level">
+                  <input type="text"  id="level" placeholder="Level"/><br />
+                  <!--<select id="level">
                     <option value="any">Level</option>
                     <option  value="1" >1</option>
                     <option  value="2" >2</option>
                     <option  value="3" >3</option>
-                  </select><br />
+                  </select><br />-->
                   <select id="price">
                     <option value="any">Price per session</option>
                     <option value="10" >Less than 10</option>
@@ -184,6 +185,9 @@
                                //var levelVal = $("#level option:selected").val();
                                var levelVal=  $("#level").val().toLowerCase();
                                var subjectVal=  $("#subject").val().toLowerCase(); // converts the input value to lowercase
+
+                               var subjectIndex = $.inArray(subjectVal,m.subjects);
+
                                  if(  
                                       (
                                       (radiusVal > distanceInkm) || (radiusVal=== 'any')
@@ -191,17 +195,14 @@
                                       (
                                       (priceVal >= m.price) || (priceVal === 'any')
                                       )&&
-
-                                      /*(
-                                      (levelVal === m.level) || (levelVal=== 'any')
-                                      ) &&*/
-                                       
-                                      (
-                                      ($.inArray(levelVal,m.level)>-1) || (levelVal === '')
-                                      )&&
                                       (
                                       ($.inArray(subjectVal,m.subjects)>-1) || (subjectVal === '')
                                       )
+                                      &&(
+                                      ($.inArray(levelVal,m.level)==subjectIndex) || (levelVal === '')
+                                      )
+                                    
+                                      
                                    )
                                   {    console.log(markers[index]);
                                       markersmap[index].setVisible(true);

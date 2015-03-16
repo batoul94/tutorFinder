@@ -2,7 +2,7 @@
      //192.168.0.2:3000  
     //this file should be inside mamp htdocs
 	require 'dbinfo.php';
-	$result = $db->query("SELECT * FROM markersdata");
+	$result = $db->query("SELECT * FROM markersdata WHERE `validated` = 'yes'");
 
 	$rezultatet = array();
 

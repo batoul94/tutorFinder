@@ -51,8 +51,13 @@
                  
                   <input type="text" name="firstname" placeholder="First Name" id="firstname"/> <br>
                   <input type="text" name="lastname" placeholder="Last Name" id="lastname"/> <br>
-                  <input type="radio" name="gender" value="male" id="gender" checked>Male<br>
-                  <input type="radio" name="gender" value="female" id="gender" >Female<br>
+
+                     <select id="gender" name="gender">
+                    <option value="">Gender</option>
+                    <option value="male" >Male</option>
+                    <option  value="female" >Female</option>
+                    </select><br />
+
                  Date of Birth: <input type="date" name="bday" id="bday"/><br>
                  <input type="text" name="address" placeholder="Address" id="address"/> <br>
                  <input type="text" name="postcode" placeholder="Post Code" id="postcode"/> <br>
@@ -97,8 +102,12 @@
                                         sAddress = document.getElementById("postcode").value;
                                          geocoder.geocode({ 'address': sAddress }, function(results, status) {
                                                   if (status == google.maps.GeocoderStatus.OK) {
-                                                     mylng = results[0].geometry.location.lng();
-                                                     mylat = results[0].geometry.location.lat();
+                                                         
+                                                         //mylng = results[0].geometry.location.lng();
+                                                        // mylat= results[0].geometry.location.lat();
+                                                         mylng = results[0].geometry.location.lat();
+                                                         mylat= results[0].geometry.location.lng();
+                                                
                                                     
                                                      console.log("hellooooooo:"+mylng);
                                                      console.log("hellooooooo"+mylat);
@@ -106,8 +115,6 @@
                                                      
                                                   }
                                               });
-                                         console.log("helloooo44ooo:"+mylng);
-                                                     console.log("hellooo44oooo"+mylat);
                         ///////////////////////////////////////////////////////
 
             });
@@ -119,7 +126,7 @@
                  e.preventDefault(); 
                 var firstname=  $("#firstname").val(); 
                 var lastname=  $("#lastname").val(); 
-                var gender=  $("#gender").val(); 
+                var gender= $("#gender option:selected").val();  // $("#gender").val();  
                 var bday=  $("#bday").val(); 
                 var address=  $("#address").val();
                 var postcode=  $("#postcode").val(); // fill up lng, lat

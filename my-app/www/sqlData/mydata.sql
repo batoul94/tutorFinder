@@ -1,7 +1,5 @@
 CREATE DATABASE tutorfinder;
 
-
-
 CREATE TABLE markersdata (
   id       int not null auto_increment,
   lng      float(10,6),
@@ -25,6 +23,7 @@ CREATE TABLE markersdata (
   video_link text,
   email varchar(100),
   password varchar(100),
+  validated varchar(60),
   primary key (id)
 );
 

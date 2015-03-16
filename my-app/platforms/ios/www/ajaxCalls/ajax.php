@@ -13,10 +13,18 @@
 		$datas['lat'] = $results['lat'];
 		$datas['firstname'] = $results['firstname'];
 		$datas['lastname'] = $results['lastname'];
-		$datas['subjects'] = array($results['subjects']);
+
+		//$datas['subjects'] = array($results['subjects']);
+		//$datas['subjects'] = explode(",",$results['subjects']);
+		 $datas['subjects'] = array_map('trim',explode(",",$results['subjects']));
+		
 		$datas['stars'] = $results['stars'];
-		$datas['level'] = array($results['level']);
+		//$datas['level'] = array($results['level']);
+		 $datas['level'] = array_map('trim',explode(",",$results['level']));
+		 
 		$datas['price'] = $results['price'];
+
+     
 
 		  array_push($rezultatet, $datas);
 

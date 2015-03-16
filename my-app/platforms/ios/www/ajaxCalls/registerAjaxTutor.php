@@ -44,7 +44,7 @@
 
 
 
-$result =  $db->query("INSERT INTO markersdata (lng, lat, firstname, lastname, gender, bday, address, postcode, city, usrtel, qualification, profile, subjects, level, price, availability, img, video_link, email, password) VALUES ('$lng', '$lat', '$firstname', '$lastname', '$gender', '$bday', '$address', '$postcode', '$city', '$usrtel', '$qualification', '$profile', '$subjects', '$level', '$price', '$availability', '$myimageLink', '$video_link', '$email','$password')");
+$result =  $db->query("INSERT INTO markersdata (lng, lat, firstname, lastname, gender, bday, address, postcode, city, usrtel, qualification, profile, subjects, level, price, availability, img, video_link, email, password, validated) VALUES ('$lng', '$lat', '$firstname', '$lastname', '$gender', '$bday', '$address', '$postcode', '$city', '$usrtel', '$qualification', '$profile', '$subjects', '$level', '$price', '$availability', '$myimageLink', '$video_link', '$email','$password', 'no')");
 
 
 
