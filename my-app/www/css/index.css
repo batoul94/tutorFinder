@@ -349,7 +349,7 @@ body {
 
 }
 
- #inputTextAddress, #subject{
+ #inputTextAddress, #subject, #level{
    width:95.5%;
    height:25px;
    margin-top:5px;

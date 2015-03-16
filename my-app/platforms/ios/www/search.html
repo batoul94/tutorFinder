@@ -124,7 +124,7 @@
                                                 position: new google.maps.LatLng(m.lng,m.lat),
                                                 map: map
                                                 }); 
-                                                var contentString ="Name: "+markers[i].name+"<br />Subject: " + markers[i].subject+"<br />Rating: " + markers[i].stars +"<br /><a href='tutorProfile.html'>Tutor Profile</a>";
+                                                var contentString ="Name: "+markers[i].firstname+" "+markers[i].lastname+"<br />Subject: " + markers[i].subjects+"<br />Rating: " + markers[i].stars +"<br /><a href='tutorProfile.html'>Tutor Profile</a>";
                                                 var infowindow = new google.maps.InfoWindow({
                                                        content: contentString
                                                      });
@@ -181,7 +181,8 @@
 
                                var radiusVal = $("#radius option:selected").val();
                                var priceVal = $("#price option:selected").val();
-                               var levelVal = $("#level option:selected").val();
+                               //var levelVal = $("#level option:selected").val();
+                               var levelVal=  $("#level").val().toLowerCase();
                                var subjectVal=  $("#subject").val().toLowerCase(); // converts the input value to lowercase
                                  if(  
                                       (
@@ -190,11 +191,16 @@
                                       (
                                       (priceVal >= m.price) || (priceVal === 'any')
                                       )&&
-                                      (
+
+                                      /*(
                                       (levelVal === m.level) || (levelVal=== 'any')
-                                      ) &&
+                                      ) &&*/
+                                       
                                       (
-                                      ($.inArray(subjectVal,m.subject)>-1) || (subjectVal === '')
+                                      ($.inArray(levelVal,m.level)>-1) || (levelVal === '')
+                                      )&&
+                                      (
+                                      ($.inArray(subjectVal,m.subjects)>-1) || (subjectVal === '')
                                       )
                                    )
                                   {    console.log(markers[index]);

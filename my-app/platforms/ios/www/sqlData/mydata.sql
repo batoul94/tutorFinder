@@ -32,8 +32,8 @@ CREATE TABLE markersdata (
   level   varchar(500),
   price   varchar(60),
   availability varchar(600),
-  img ,
-  video_link,
+  img text,
+  video_link text,
   email varchar(100),
   password varchar(100),
   primary key (id)
