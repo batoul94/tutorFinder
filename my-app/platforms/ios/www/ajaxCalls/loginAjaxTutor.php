@@ -13,10 +13,9 @@
 
         if($count==1) {
 
-            $_SESSION['login_tutor']=$row['id'];
+            $_SESSION['login_tutor']=$row['id']; 
             echo $row['firstname'];
-            //header("location: profile.php");
-
+          
         }
 
     }

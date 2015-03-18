@@ -47,30 +47,48 @@
     <div class="content">
         
             
-            <div id="prof-wrapper">
-                
-                
-               <h4> Zainab Jahad </h4>
+       <div id="prof-wrapper">
+
+                    <h4><div id="fullname"></div></h4>
+
+                    <p> Contact </p>
+                    <FORM id="telForm" METHOD="CALL">
+                       <INPUT class="contact-buttons" TYPE="submit" VALUE="CALL">
+                    </FORM>
+                  
+                    <FORM id="mailForm" METHOD="POST">
+                       <INPUT class="contact-buttons" TYPE="submit" VALUE="EMAIL">
+                    </FORM>
+                 
+                    <div class="boxed">
+                     <p> photo </p>
+                     <img id="photo" height="100" width="100"/>
+                    </div>
+
             
-               <p> Contact </p>
-            
-              <FORM METHOD="CALL" ACTION=<"tel:+18002752273">
-                 <INPUT class="contact-buttons" TYPE="submit" VALUE="CALL">
-              </FORM>
-            
-              <FORM METHOD="POST" ACTION=<"mailto:zainab_31_01@htomail.co.uk">
-                 <INPUT class="contact-buttons" TYPE="submit" VALUE="EMAIL">
-              </FORM>
-            
-            
-                      <div class="boxed">
-                          <p> photo </p>
-                      </div>
-                      
-           
-            
-                <div class="prof-menu">
-                        <FORM name="caller" method="POST" action="">
+                     <div class="prof-menu">
+                              <input type="button" id="ctrlbtn1" name="ctrlbtn1"  value="Profile" onclick="showProfileInfo();"/>
+                              <input type="button" id="ctrlbtn2" name="ctrlbtn2"  value="Availability" onclick="showAvailability();"/> 
+                              <input type="button" id="ctrlbtn3" name="ctrlbtn3"  value="Reviews" onclick="showReviews();"/>
+                              <br>
+
+                               <div id="ProfileForm" style="display:none">
+                                  <p>Tutor Profile: </p><div id="profileInfo"></div>
+                                 <div id="myvideo"></div>
+                                 <p>Qualifications: </p><div id="qualifications"></div>
+                               </div>
+
+
+                               <div id="AvailabilityForm" style="display:none">
+                                <p>Tutor Availability: </p><div id="avaliabilityInfo"></div>
+                               </div>
+
+
+                               <div id="ReviewsForm" style="display:none">
+                               </div>
+                     </div>    
+ 
+                       <!-- <FORM name="caller" method="POST" action="">
                             
                               <p>
                                 <INPUT class="m-buttons" type="BUTTON" value="Profile"
@@ -83,16 +101,83 @@
                                           ONCLICK="loadWholePage('review.html')">
                               </p>
                               
-                         </FORM>
-                 </div>
+                         </FORM>-->
+               
+
                 
             </div>
             
             <div id="storage" style="display:none;"> </div>
             <div id="displayed" class="prof-content"> </div>
     </div>
+        <script>
+
+         $(document).ready(function() {
+
+          var markers = []; 
+
+                  $.ajax({
+
+                          url: 'http://localhost:8888/ajaxCalls/profileAjax.php',
+                          dataType: 'json',
+                          success: function(data){
+                              $.each(data, function(data, res){
+                                    markers.push(res);
+                              });
+
+                         $("#fullname").html(markers[0].firstname+"  "+markers[0].lastname);
+                         console.log("helloooooooo:::::"+markers[0].firstname);
+                         // var src1 = <%=Url.Content(Server.MapPath("ajaxCalls/imagesTree/image0.jpg"))%>;
+                         //var src1 = 'http://localhost:8888/ajaxCalls/'+markers[0].img;
+
+                         var src1 = 'ajaxCalls/'+markers[0].img;  // gets image from local file not server
+                         $('#photo').attr('src',src1);
+
+
+                          var act1 = 'tel:+'+markers[0].usrtel;
+                          $('#telForm').attr('action',act1);
+
+                          var act2 = 'mailto:'+markers[0].email;
+                          $('#mailForm').attr('action',act2);
+            
+                            $("#profileInfo").html(markers[0].profile;
+                            $("#myvideo").html(markers[0].video_link);
+                            $("#qualifications").html(markers[0].qualification);
+
+                             $("#availabilityInfo").html(markers[0].availability);
+
+
+                             }
+
+                        }); //end of ajax call
+
+                      
+
+
+         });
+          </script>
         
-        
+            <!--     <script type="text/javascript">
+                     /* these three functions are called by the three buttons below */
+                     function showProfileInfo(){
+                      document.getElementById('ProfileForm').style.display="block";
+                      document.getElementById('AvailabilityForm').style.display="none";  
+                      document.getElementById('ReviewsForm').style.display="none";  
+                    }
+
+                    function showAvailability(){
+                      document.getElementById('AvailabilityForm').style.display="block";
+                      document.getElementById('ProfileForm').style.display="none";  
+                      document.getElementById('ReviewsForm').style.display="none"; 
+                    }
+
+                    function showReviews(){
+                      document.getElementById('ReviewsForm').style.display="block";
+                      document.getElementById('ProfileForm').style.display="none";  
+                      document.getElementById('AvailabilityForm').style.display="none";  
+                    }
+
+               </script>-->
         
         
         
