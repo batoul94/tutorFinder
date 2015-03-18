@@ -103,10 +103,8 @@
                                          geocoder.geocode({ 'address': sAddress }, function(results, status) {
                                                   if (status == google.maps.GeocoderStatus.OK) {
                                                          
-                                                         //mylng = results[0].geometry.location.lng();
-                                                        // mylat= results[0].geometry.location.lat();
-                                                         mylng = results[0].geometry.location.lat();
-                                                         mylat= results[0].geometry.location.lng();
+                                                         mylng = results[0].geometry.location.lng();
+                                                         mylat= results[0].geometry.location.lat();
                                                 
                                                     
                                                      console.log("hellooooooo:"+mylng);

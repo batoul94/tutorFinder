@@ -57,7 +57,7 @@
                       -->
                
                
-               <select id="loginButton" class="home-buttons" onchange="myFunction()">
+               <select id="loginButton" class="home-buttons" onchange="myFunction()" style="display:none">
                    <option value="" disabled selected>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Login</option>
                    <option value="parent">Parent</option>
                    <option value="tutor">Tutor</option>
@@ -65,12 +65,16 @@
                </select>
                
                
-                       <select id="registerButton" class="home-buttons" onchange="myFunction()">
+                       <select id="registerButton" class="home-buttons" onchange="myFunction()" style="display:none">
                            <option value="" disabled selected>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Register</option>
                            <option value="parent">Parent</option>
                            <option value="tutor">Tutor</option>
                            
                        </select>
+
+
+              
+              <input type="button" id="logoutButton"  class="home-buttons" value="Log Out" onclick="myLogoutFunction();" style="display:none"/>
                      
                
               
@@ -110,8 +114,43 @@
         <script type="text/javascript">
             app.initialize();
         </script>
-        
+     
+
         <script>
+         $(document).ready(function() {
+               var markers = []; 
+                     $.ajax({
+                                      
+                                      url: 'http://localhost:8888/ajaxCalls/AjaxCheck.php',
+                                      dataType: 'json',
+                                       success: function(data){
+                                              $.each(data, function(data, res){
+                                                    markers.push(res);
+                                               });
+                                                          if(data) { // if user is logged in, display only logoutButton
+                                                            console.log("yesssssssss");
+                                                             document.getElementById('logoutButton').style.display="block";
+                                                             document.getElementById('registerButton').style.display="none";  
+                                                             document.getElementById('loginButton').style.display="none"; 
+                                                         }else {
+                                                          console.log("nooooooooooooo");
+                                                             document.getElementById('logoutButton').style.display="none";
+                                                             document.getElementById('registerButton').style.display="block";  
+                                                             document.getElementById('loginButton').style.display="block";  
+                                                        }
+                                              }
+                        }); //end of ajax call
+                 console.log("markershhhhh :"+ markers[0].firstname);
+          });   
+
+        
+
+
+         </script>
+
+
+        <script>
+
             function myFunction() {
                 var x = document.getElementById("registerButton").value;
                 var s = document.getElementById("loginButton").value;
@@ -139,6 +178,18 @@
                     window.open("loginTutor.html");
                 }
             }
+
+
+            function myLogoutFunction(){
+
+                   $.ajax({
+                                      type: "POST",
+                                      url: 'http://localhost:8888/ajaxCalls/logoutAjax.php'
+                   }); //end of ajax call
+
+
+            }
+
         </script>
         
         

@@ -122,10 +122,10 @@
 
                         $.each(markers, function(i, m) {
                                                 markersmap[i] = new google.maps.Marker({
-                                                position: new google.maps.LatLng(m.lng,m.lat),
+                                                position: new google.maps.LatLng(m.lat,m.lng),
                                                 map: map
                                                 }); 
-                                                var contentString ="Name: "+markers[i].firstname+" "+markers[i].lastname+"<br />Subject: " + markers[i].subjects+"<br />Rating: " + markers[i].stars +"<br /><a href='tutorProfile.html'>Tutor Profile</a>";
+                                                var contentString ="Name: "+markers[i].firstname+" "+markers[i].lastname+"<br />Subject: " + markers[i].subjects+"<br />Rating: " + markers[i].stars +"<br /><a href='profile.html'>Tutor Profile</a>";
                                                 var infowindow = new google.maps.InfoWindow({
                                                        content: contentString
                                                      });
@@ -176,7 +176,7 @@
 
                $.each(markers, function(index, m) 
                {  
-                               var targetLoc = new google.maps.LatLng(markers[index].lng,markers[index].lat);
+                               var targetLoc = new google.maps.LatLng(markers[index].lat, markers[index].lng);
                                var distanceInkm = google.maps.geometry.spherical.computeDistanceBetween(mycenter,targetLoc)/1000; 
                                console.log(distanceInkm); 
 

@@ -1,5 +1,6 @@
 CREATE DATABASE tutorfinder;
 
+DROP TABLE IF EXISTS markersdata;
 CREATE TABLE markersdata (
   id       int not null auto_increment,
   lng      float(10,6),
@@ -35,6 +36,13 @@ CREATE TABLE parentReg (
   email    varchar(500),
   password   varchar(50),
   primary key (parent_id)
+);
+
+CREATE TABLE tutor_reviews(
+  id int NOT NULL AUTO_INCREMENT,
+  tutor_id int not null, 
+  review_body text,
+  primary key (id)
 );
 
 

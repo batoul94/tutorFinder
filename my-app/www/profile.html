@@ -109,7 +109,7 @@
 
 
                                <div id="ReviewsForm" style="display:none">
-                                         <p>Tutor Reviews: </p><div id="reviewsInfo"></div>
+                                         <p>Tutor Reviews: </p><div id="reviewsDisplay"></div>
                                </div>
                      </div> 
  
@@ -151,6 +151,7 @@
                               });
 
                          $('#fullname').html(markers[0].firstname+"  "+markers[0].lastname);
+                       
 
                          // var src1 = <%=Url.Content(Server.MapPath("ajaxCalls/imagesTree/image0.jpg"))%>;
                          //var src1 = 'http://localhost:8888/ajaxCalls/'+markers[0].img;
@@ -174,7 +175,33 @@
 
                              }
 
-                        }); //end of ajax call
+                        }); //end of ajax call 1
+
+
+
+            ///////////////////// second ajax call to get reviews
+
+            var reviewMarkers = [];
+
+            $.ajax({
+                          url: 'http://localhost:8888/ajaxCalls/reviewsDisplayAjax.php',
+                          dataType: 'json',
+                          success: function(data){
+                              $.each(data, function(data, res){
+                                    reviewMarkers.push(res);
+                              });
+
+                              $('#reviewsDisplay').html(reviewMarkers[0].id+": "+reviewMarkers[0].review_body);
+
+
+                             }
+
+                        }); //end of ajax call 2
+
+
+
+
+            
 
                       
 

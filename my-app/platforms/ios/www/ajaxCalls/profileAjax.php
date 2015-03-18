@@ -17,10 +17,13 @@ if(isset($_SESSION['login_tutor'])){
 		$datas['usrtel'] = $results['usrtel'];
 		$datas['email'] = $results['email'];
 		$datas['img'] = $results['img'];
-		$datas['video_link'] = $results['video_link'];
+		
 		$datas['profile'] = $results['profile'];
-		$datas['availability'] = $results['availability'];
 		$datas['qualification'] = $results['qualification'];
+		$datas['video_link'] = $results['video_link'];
+		
+		$datas['availability'] = $results['availability'];
+		
 		
 	
          array_push($rezultatet, $datas);
