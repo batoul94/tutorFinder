@@ -100,6 +100,8 @@
                                       <p>Tutor Profile: </p><div id="profileInfo"></div>
                                      <div id="myvideo"></div>
                                      <p>Qualifications: </p><div id="qualifications"></div>
+                                     <p>Subjects and Levels: </p><div id="subjectLevels"></div>
+                                     <p>Prices: </p><div id="prices"></div>
                                </div>
 
 
@@ -151,7 +153,7 @@
                               });
 
                          $('#fullname').html(markers[0].firstname+"  "+markers[0].lastname);
-                       
+
 
                          // var src1 = <%=Url.Content(Server.MapPath("ajaxCalls/imagesTree/image0.jpg"))%>;
                          //var src1 = 'http://localhost:8888/ajaxCalls/'+markers[0].img;
@@ -169,6 +171,8 @@
                             $('#profileInfo').html(markers[0].profile);
                             $('#myvideo').html(markers[0].video_link);
                             $('#qualifications').html(markers[0].qualification);
+                            $('#subjectLevels').html(markers[0].subjects+"  "+markers[0].level);
+                            $('#prices').html(markers[0].price);
 
                              $('#availabilityInfo').html(markers[0].availability);
 

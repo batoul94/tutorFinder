@@ -71,8 +71,9 @@
               </form><br>
      
               <div id="map-canvas"></div>
-           
-         
+
+              
+          
          
         </div>
       <script>
@@ -125,22 +126,46 @@
                                                 position: new google.maps.LatLng(m.lat,m.lng),
                                                 map: map
                                                 }); 
-                                                var contentString ="Name: "+markers[i].firstname+" "+markers[i].lastname+"<br />Subject: " + markers[i].subjects+"<br />Rating: " + markers[i].stars +"<br /><a href='profile.html'>Tutor Profile</a>";
+                                                
+                                                var contentString ="Name: "+markers[i].firstname+" "+markers[i].lastname+"<br />Subject: " + markers[i].subjects+"<br />Rating: " + markers[i].stars +"<br /><input type='button' id='myMarkerButton' value='Tutor Profile' onclick='createThisMarkerSession("+markers[i].id+");'/>";
+
                                                 var infowindow = new google.maps.InfoWindow({
                                                        content: contentString
                                                      });
                                                 google.maps.event.addListener(markersmap[i], 'click', function() {
                                                         infowindow.open(map,markersmap[i]);
                                                      });
-                                         });
-                          
-                   
+
+                                               
+                                               
+                                              });
+                                  
                           
                       }
             }); //end of ajax call
 
 
       }
+                
+                              /////////////////////
+                                                  function createThisMarkerSession(e){
+
+                                                  var mymarker = e;
+                                                   var dataString = 'mymarker='+mymarker;
+
+                                                                     $.ajax({
+                                                                                  type: "POST",
+                                                                                  url: 'http://localhost:8888/ajaxCalls/markerIdSessionAjax.php',
+                                                                                  data: dataString,
+                                                                                  success: function(data){
+                                                                                                  window.location.href = "profile.html";
+
+                                                                                          }
+                                                                                }); //end of ajax call
+                                                                     console.log("shoooooow mark:"+mymarker);
+                                              
+                                                }
+                               //////////////////////
 
 
 
@@ -217,7 +242,29 @@
         });
 
   
-</script>    
+</script>   
+
+
+ <script type="text/javascript">
+   /* function createThisMarkerSession(){
+                                                  //<button onclick="myFunction()">Click me</button>
+
+       var mymarker =  markers[i].id; 
+       var dataString = 'mymarker='+mymarker;
+
+        $.ajax({
+       type: "POST",
+       url: 'http://localhost:8888/ajaxCalls/markerIdSessionAjax.php',
+       data: dataString,
+        success: function(data){
+                 if(data) { window.location.href = "profile.html"; }
+             }
+       }); //end of ajax call
+
+        console.log("idddddddddddd");
+                                              
+    }*/
+</script> 
     
         <!--Footer-->
         <script type="text/javascript" src="footer.js"> </script>
