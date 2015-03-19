@@ -81,8 +81,10 @@ elseif (isset($_SESSION['login_parent'])){
 
 					$datas['firstname'] = $results['firstname'];
 					$datas['lastname'] =  $results['lastname'];
-					//$datas['usrtel'] = $results['usrtel'];
-					//$datas['email'] = $results['email'];
+
+					$datas['usrtel'] = '';
+					$datas['email'] = '';
+
 					$datas['img'] = $results['img'];
 					
 					$datas['profile'] = $results['profile'];

@@ -53,14 +53,18 @@
 
                     <h4><div id="fullname"></div></h4>
 
-                    <p> Contact </p>
-                    <FORM id="telForm" METHOD="CALL">
-                       <INPUT class="contact-buttons" TYPE="submit" VALUE="CALL">
-                    </FORM>
-                  
-                    <FORM id="mailForm" METHOD="POST">
-                       <INPUT class="contact-buttons" TYPE="submit" VALUE="EMAIL">
-                    </FORM>
+                    <div id="publicContact">You need to <a href="index.html">log in</a> to contact this tutor</div>
+
+                    <div id="ContactInfo" style="display:none">
+                          <p> Contact </p>
+                          <FORM id="telForm" METHOD="CALL" >
+                             <INPUT class="contact-buttons" TYPE="submit" VALUE="CALL">
+                          </FORM>
+                        
+                          <FORM id="mailForm" METHOD="POST" >
+                             <INPUT class="contact-buttons" TYPE="submit" VALUE="EMAIL">
+                          </FORM>
+                    </div>
                  
                     <div class="boxed">
                      <p> photo </p>
@@ -87,6 +91,10 @@
                       document.getElementById('AvailabilityForm').style.display="none";  
                     }
 
+                    function showAddReviewForm(){
+                      document.getElementById('AddReviewForm').style.display="block";
+                    }
+
                     </script>
   
             
@@ -111,25 +119,21 @@
 
 
                                <div id="ReviewsForm" style="display:none">
+
+                                         <br><br>
+                                        <input type="button" id="addReview"  value="Add a Review" onclick="showAddReviewForm();" style="display:none"/>
+                                                      <form id="AddReviewForm"  style="display:none">
+                                                         <input type="text" id="rev_body" /> <br>
+                                                          <div id="error"></div>
+                                                         <input type="submit" value="Submit Review">
+                                                      </form>
+
                                          <p>Tutor Reviews: </p><div id="reviewsDisplay"></div>
+
                                </div>
                      </div> 
  
-                       <!-- <FORM name="caller" method="POST" action="">
-                            
-                              <p>
-                                <INPUT class="m-buttons" type="BUTTON" value="Profile"
-                                    ONCLICK="loadWholePage('profile2.html')">
-                                  
-                                <INPUT class="m-buttons" type="BUTTON" value="Availability"
-                                      ONCLICK="loadWholePage('availability.html')">
-                                      
-                                <INPUT  class="m-buttons" type="BUTTON" value="Reviews"
-                                          ONCLICK="loadWholePage('review.html')">
-                              </p>
-                              
-                         </FORM>-->
-               
+                  
 
                 
             </div>
@@ -161,13 +165,19 @@
                          var src1 = 'ajaxCalls/'+markers[0].img;  // gets image from local file not server
                          $('#photo').attr('src',src1);
 
+                         if(markers[0].usrtel != ''){
+                                var act1 = 'tel:+'+markers[0].usrtel;
+                                $('#telForm').attr('action',act1);
 
-                          var act1 = 'tel:+'+markers[0].usrtel;
-                          $('#telForm').attr('action',act1);
 
-                          var act2 = 'mailto:'+markers[0].email;
-                          $('#mailForm').attr('action',act2);
-            
+                                var act2 = 'mailto:'+markers[0].email;
+                                $('#mailForm').attr('action',act2);
+
+                                document.getElementById('ContactInfo').style.display="block";
+                                document.getElementById('publicContact').style.display="none"; 
+                                document.getElementById('addReview').style.display="block";
+                         }
+
                             $('#profileInfo').html(markers[0].profile);
                             $('#myvideo').html(markers[0].video_link);
                             $('#qualifications').html(markers[0].qualification);
@@ -195,7 +205,10 @@
                                     reviewMarkers.push(res);
                               });
 
-                              $('#reviewsDisplay').html(reviewMarkers[0].id+": "+reviewMarkers[0].review_body);
+                                  for(i = 0; i < reviewMarkers.length; i++){
+                                     $('#reviewsDisplay').append(reviewMarkers[i].id+": "+reviewMarkers[i].review_body+"<br />");
+
+                                  }
 
 
                              }
@@ -203,8 +216,40 @@
                         }); //end of ajax call 2
 
 
+       /////////////////////////////////////////// third ajax call to add a review
+
+             $('#AddReviewForm').submit(function(e){
+
+                        e.preventDefault();
+
+                        var review_body=  $("#rev_body").val(); 
+                        var dataString = 'review_body='+review_body;
+
+                         if(($.trim(review_body).length>0))
+                            {
+                                 $.ajax({
+                                      type: "POST",
+                                      url: 'http://localhost:8888/ajaxCalls/AddReviewAjax.php',
+                                      data: dataString,
+                                      success: function(data){
+                                                          if(!data) {
+                                                            window.location.href = "profile.html";
+                                                            // document.getElementById('AddReviewForm').style.display="block";
+                                                            // $("#error").html("Your review has been added!");
+                                                          }
+                                              }
+                                    }); //end of ajax call
+                                              
+                         }else{
+                             $("#error").html("<span style='color:#cc0000'>Your Review is too short!</span>");
+                         }
+
+                        
 
 
+               });
+
+           /////////////////////////////////// end of third ajax call
             
 
                       

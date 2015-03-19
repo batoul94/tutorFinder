@@ -3,37 +3,55 @@ session_start();
 
 require 'dbinfo.php';
 
-  if(isset($_SESSION['login_tutor']) ){
 
-  $logged_in = $_SESSION['login_tutor'];
+	
+		   if(isset($_SESSION['login_tutor'])){
 
-        $result=mysqli_query($db,"SELECT * FROM markersdata WHERE id='$logged_in'");
-        $count=mysqli_num_rows($result);
-        $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+		   	$myid = $_SESSION['login_tutor'];
 
-        if($count==1) {
-            echo $row['firstname'];
-          
-        }
+			$result = $db->query("SELECT * FROM markersdata WHERE `id` = '$myid'");
+		   
+		     $rezultatet = array();
+		       foreach ($result as $results) {
 
-  }else if( isset($_SESSION['login_parent']){
-
-     $logged_in = $_SESSION['login_parent'];
-
-      $result=mysqli_query($db,"SELECT * FROM parentReg WHERE parent_id='$logged_in'");
-        $count=mysqli_num_rows($result);
-        $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-        if($count==1) {
-            echo $row['firstname'];
-          
-        }
+				$datas['firstname'] = $results['firstname'];
+				$datas['lastname'] =  $results['lastname'];
+			
+		         array_push($rezultatet, $datas);
+		     }
+		     echo json_encode($rezultatet);
 
 
-  }else{
+		   }
+			
+			
+	elseif(isset($_SESSION['login_parent'])){
 
-  	//echo "<meta http-equiv='refresh' content='0;url=index.html'>";
+		$myid = $_SESSION['login_parent'];
+
+		$result = $db->query("SELECT * FROM parentReg WHERE `parent_id` = '$myid'");
+			   
+		$rezultatet = array();
+		 foreach ($result as $results) {
+
+					$datas['firstname'] = $results['firstname'];
+					$datas['lastname'] =  $results['lastname'];
+					
+				
+			         array_push($rezultatet, $datas);
+		}
+		echo json_encode($rezultatet);
+
+
+    }
+
+
+
+  else{
+
+  	echo "<meta http-equiv='refresh' content='0;url=index.html'>";
   }
+
 
 
 ?>

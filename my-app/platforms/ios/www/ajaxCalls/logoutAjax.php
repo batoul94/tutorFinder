@@ -1,10 +1,11 @@
 <?php
 
 			  session_start();
+			  // session_destroy();
 			if(session_destroy()) // Destroying All Sessions
 			{
 			
-				echo "<meta http-equiv='refresh' content='0;url=index.html'>"; // Redirecting To Home Page
+				header("Location: index.html");// Redirecting To Home Page
 
 			}
 

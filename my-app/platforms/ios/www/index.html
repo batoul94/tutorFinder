@@ -57,7 +57,7 @@
                       -->
                
                
-               <select id="loginButton" class="home-buttons" onchange="myFunction()" style="display:none">
+               <select id="loginButton" class="home-buttons" onchange="myFunction()">
                    <option value="" disabled selected>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Login</option>
                    <option value="parent">Parent</option>
                    <option value="tutor">Tutor</option>
@@ -65,7 +65,7 @@
                </select>
                
                
-                       <select id="registerButton" class="home-buttons" onchange="myFunction()" style="display:none">
+                       <select id="registerButton" class="home-buttons" onchange="myFunction()">
                            <option value="" disabled selected>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Register</option>
                            <option value="parent">Parent</option>
                            <option value="tutor">Tutor</option>
@@ -75,8 +75,9 @@
 
               
               <input type="button" id="logoutButton"  class="home-buttons" value="Log Out" onclick="myLogoutFunction();" style="display:none"/>
-                     
-               
+
+              
+             
               
               <br><br><br>
               
@@ -119,39 +120,38 @@
         <script>
          $(document).ready(function() {
                var markers = []; 
+               
                      $.ajax({
-                                      
                                       url: 'http://localhost:8888/ajaxCalls/AjaxCheck.php',
                                       dataType: 'json',
                                        success: function(data){
-                                              $.each(data, function(data, res){
-                                                    markers.push(res);
-                                               });
-                                                          if(data) { // if user is logged in, display only logoutButton
-                                                            console.log("yesssssssss");
-                                                             document.getElementById('logoutButton').style.display="block";
-                                                             document.getElementById('registerButton').style.display="none";  
-                                                             document.getElementById('loginButton').style.display="none"; 
-                                                         }else {
-                                                          console.log("nooooooooooooo");
-                                                             document.getElementById('logoutButton').style.display="none";
-                                                             document.getElementById('registerButton').style.display="block";  
-                                                             document.getElementById('loginButton').style.display="block";  
-                                                        }
-                                              }
+                                                    $.each(data, function(data, res){
+                                                          markers.push(res);
+                                                     });
+
+                                              
+                                            
+                                                 if(markers.length > 0) { // if user is logged in, display only logoutButton
+                                                    document.getElementById('logoutButton').style.display="block";
+                                                    document.getElementById('registerButton').style.display="none";  
+                                                    document.getElementById('loginButton').style.display="none"; 
+                                                   }else {
+
+                                                    document.getElementById('logoutButton').style.display="none";
+                                                    document.getElementById('registerButton').style.display="block";  
+                                                    document.getElementById('loginButton').style.display="block";  
+                                                   }
+                                          }
                         }); //end of ajax call
-                 console.log("markershhhhh :"+ markers[0].firstname);
+
+          
           });   
 
-        
 
 
-         </script>
+////////////////////////////////////////////////
 
-
-        <script>
-
-            function myFunction() {
+       function myFunction() {
                 var x = document.getElementById("registerButton").value;
                 var s = document.getElementById("loginButton").value;
                 if(x == "parent")
@@ -181,16 +181,21 @@
 
 
             function myLogoutFunction(){
-
-                   $.ajax({
-                                      type: "POST",
-                                      url: 'http://localhost:8888/ajaxCalls/logoutAjax.php'
-                   }); //end of ajax call
+                   $.ajax({type: "POST", url: 'http://localhost:8888/ajaxCalls/logoutAjax.php'}); //end of ajax call
+                    document.getElementById('logoutButton').style.display="none";
+                    document.getElementById('registerButton').style.display="block";  
+                    document.getElementById('loginButton').style.display="block";  
+                    $("#testDiv").attr('value','');
+                  //window.location.reload();
 
 
             }
 
-        </script>
+
+
+         </script>
+
+
         
         
     </body>
