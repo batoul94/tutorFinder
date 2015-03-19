@@ -51,6 +51,9 @@
             
        <div id="prof-wrapper">
 
+
+                     <div id="EditProfileLink" style="display:none" ><a href="editprofile.html">Edit Profile</a></div><br>
+
                     <h4><div id="fullname"></div></h4>
 
                     <div id="publicContact">You need to <a href="index.html">log in</a> to contact this tutor</div>
@@ -176,6 +179,11 @@
                                 document.getElementById('ContactInfo').style.display="block";
                                 document.getElementById('publicContact').style.display="none"; 
                                 document.getElementById('addReview').style.display="block";
+                         }
+                         if(markers[0].this_isTutor != ''){
+                                  document.getElementById('EditProfileLink').style.display="block";
+                         }else{
+                                   document.getElementById('EditProfileLink').style.display="none";
                          }
 
                             $('#profileInfo').html(markers[0].profile);
