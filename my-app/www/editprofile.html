@@ -51,11 +51,8 @@
           <form id="profileEditForm" >
                  
                 
-                 Address:<input type="text" name="address" id="address"/> <br>
-                 Post Code:<input type="text" name="postcode" id="postcode"/> <br>
-                 City:<input type="text" name="city" id="city"/> <br>
-                  
-
+                 Full Address:<input type="text" name="address" id="address"/> <br>
+               
                  Contact No:<input type="tel" name="usrtel"  id="usrtel" ><br>
                  Qualification:<input type="text" name="qualification" id="qualification"/> <br>
                  Profile:<textarea rows="4" type="text" name="profile" id="profile"></textarea> <br>
@@ -93,8 +90,6 @@
                               });
 
                          $('#address').val(markers[0].address);
-                         $('#postcode').val(markers[0].postcode);
-                         $('#city').val(markers[0].city);
                          $('#usrtel').val(markers[0].usrtel);
                          $('#qualification').val(markers[0].qualification);
                          $('#profile').html(markers[0].profile);  // for textarea use .html
@@ -154,8 +149,6 @@
                  e.preventDefault(); 
                
                 var address=  $("#address").val();
-                var postcode=  $("#postcode").val(); // fill up lng, lat
-                var city=  $("#city").val();
                 var usrtel=  $("#usrtel").val(); 
                 var qualification=  $("#qualification").val();
                 var profile=  $("#profile").val();  
@@ -170,8 +163,6 @@
 
                
                 form_data.append('address', address);
-                form_data.append('postcode', postcode);
-                form_data.append('city', city);
                 form_data.append('usrtel', usrtel);
                 form_data.append('qualification', qualification);
                 form_data.append('profile', profile);

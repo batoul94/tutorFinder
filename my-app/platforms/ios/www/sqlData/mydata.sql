@@ -11,8 +11,6 @@ CREATE TABLE markersdata (
   gender    varchar(60), 
   bday    date, 
   address varchar(400),
-  postcode varchar(100),
-  city varchar(100),
   usrtel int,
   qualification varchar(600),
   profile varchar(600),

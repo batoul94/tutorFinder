@@ -8,8 +8,6 @@
     $myid = $_SESSION['login_tutor'];
    
     $address = $_POST['address'];
-    $postcode = $_POST['postcode'];
-    $city = $_POST['city'];
     $usrtel = $_POST['usrtel'];
     $qualification = $_POST['qualification'];
     $profile = $_POST['profile'];
@@ -26,7 +24,7 @@
   
 
       
-  $update =  $db->query("UPDATE markersdata SET `address` = '$address', `postcode` = '$postcode', `city` = '$city', `usrtel` = '$usrtel', `qualification` = '$qualification', `profile` = '$profile', `subjects` = '$subjects', `level` = '$level', `price` = '$price', `availability` = '$availability', `video_link` = '$video_link' , `lng` = '$lng' , `lat` = '$lat' WHERE `id` = '$myid'");
+  $update =  $db->query("UPDATE markersdata SET `address` = '$address', `usrtel` = '$usrtel', `qualification` = '$qualification', `profile` = '$profile', `subjects` = '$subjects', `level` = '$level', `price` = '$price', `availability` = '$availability', `video_link` = '$video_link' , `lng` = '$lng' , `lat` = '$lat' WHERE `id` = '$myid'");
             
 
    }

@@ -13,8 +13,6 @@ if(isset($_SESSION['login_tutor'])){
        foreach ($result as $results) {
 
 		$datas['address'] = $results['address'];
-		$datas['postcode'] =  $results['postcode'];
-		$datas['city'] = $results['city'];
 		$datas['usrtel'] = $results['usrtel'];
 
 		

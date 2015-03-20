@@ -59,9 +59,7 @@
                     </select><br />
 
                  Date of Birth: <input type="date" name="bday" id="bday"/><br>
-                 <input type="text" name="address" placeholder="Address" id="address"/> <br>
-                 <input type="text" name="postcode" placeholder="Post Code" id="postcode"/> <br>
-                 <input type="text" name="city" placeholder="City" id="city"/> <br>
+                 <input type="text" name="address" placeholder="Full Address" id="address"/> <br>
                  <input type="tel" name="usrtel"  id="usrtel" placeholder="Contact Number"><br>
                  <input type="text" name="qualification" placeholder="Qualification" id="qualification"/> <br>
                  <textarea rows="4" type="text" name="profile" placeholder="Profile" id="profile"></textarea> <br>
@@ -95,11 +93,11 @@
              google.maps.event.addDomListener(window, 'load', initializeme);
 
 
-             $("#postcode").bind( "change", function() 
+             $("#address").bind( "change", function() 
             { 
                    ////////////////////////////////////////////////////////
                                            
-                                        sAddress = document.getElementById("postcode").value;
+                                        sAddress = document.getElementById("address").value;
                                          geocoder.geocode({ 'address': sAddress }, function(results, status) {
                                                   if (status == google.maps.GeocoderStatus.OK) {
                                                          
@@ -107,8 +105,6 @@
                                                          mylat= results[0].geometry.location.lat();
                                                 
                                                     
-                                                     console.log("hellooooooo:"+mylng);
-                                                     console.log("hellooooooo"+mylat);
                                                    
                                                      
                                                   }
@@ -127,8 +123,6 @@
                 var gender= $("#gender option:selected").val();  // $("#gender").val();  
                 var bday=  $("#bday").val(); 
                 var address=  $("#address").val();
-                var postcode=  $("#postcode").val(); // fill up lng, lat
-                var city=  $("#city").val();
                 var usrtel=  $("#usrtel").val(); 
                 var qualification=  $("#qualification").val();
                 var profile=  $("#profile").val();  
@@ -152,8 +146,6 @@
                 form_data.append('gender', gender);
                 form_data.append('bday', bday);
                 form_data.append('address', address);
-                form_data.append('postcode', postcode);
-                form_data.append('city', city);
                 form_data.append('usrtel', usrtel);
                 form_data.append('qualification', qualification);
                 form_data.append('profile', profile);
@@ -178,8 +170,6 @@
                             && ($.trim(gender).length>0)
                             && ($.trim(bday).length>0)
                             && ($.trim(address).length>0)
-                            && ($.trim(postcode).length>0)
-                            && ($.trim(city).length>0)
                             && ($.trim(usrtel).length>0)
                             && ($.trim(qualification).length>0)
                             && ($.trim(profile).length>0)
