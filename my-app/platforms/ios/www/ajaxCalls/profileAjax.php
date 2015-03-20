@@ -12,6 +12,7 @@ if(isset($_SESSION['login_tutor'])){
     $rezultatet = array();
        foreach ($result as $results) {
 
+        $datas['this_isTutor']= 'yes';
 		$datas['firstname'] = $results['firstname'];
 		$datas['lastname'] =  $results['lastname'];
 		$datas['usrtel'] = $results['usrtel'];
@@ -45,6 +46,7 @@ elseif (isset($_SESSION['login_parent'])){
     $rezultatet = array();
        foreach ($result as $results) {
 
+        $datas['this_isTutor']= '';
 		$datas['firstname'] = $results['firstname'];
 		$datas['lastname'] =  $results['lastname'];
 		$datas['usrtel'] = $results['usrtel'];
@@ -79,6 +81,7 @@ elseif (isset($_SESSION['login_parent'])){
 			    $rezultatet = array();
 			       foreach ($result as $results) {
 
+                    $datas['this_isTutor']= '';
 					$datas['firstname'] = $results['firstname'];
 					$datas['lastname'] =  $results['lastname'];
 

@@ -148,6 +148,116 @@ a {
 }
 
 
+
+/*----------------tutor profile page css---------------------------*/
+#prof-wrapper
+{
+    position: fixed;
+    top:10%;
+    width: 100%;
+    background-color: white;
+    
+}
+
+
+
+
+.contact-buttons
+{
+    
+    background: #f1f2f3;
+    background-image: -webkit-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -moz-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -ms-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -o-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: linear-gradient(to bottom, #f1f2f3, #d5d7d9);
+    -webkit-border-radius: 22;
+    -moz-border-radius: 22;
+    border-radius: 22px;
+    text-shadow: 0px 0px 2px #057c91;
+    font-family: Georgia;
+    color: #057c91;
+    font-size: 10px;
+    padding: 5px 10px 5px 10px;
+    border: solid #e4e7eb 2px;
+    text-decoration: none;
+    width: 20%;
+    margin-left: 0.5%;
+    margin-top: -1%;
+    float:left;
+    position:relative;
+    
+    
+}
+
+.boxed {
+    
+    position:relative;
+    
+    width: 8em;
+    height: 8em;
+    margin-top: -15%;
+    margin-left: 69%;
+    float: right;
+    
+}
+
+
+
+
+
+.vidHolder {
+    
+    position:relative;
+    width: 15em;
+    height: 8em;
+    margin-top: 10%;
+    margin-left: 23%;
+    
+}
+
+
+.m-buttons
+{
+    
+    background: #057c91;
+    background-image: -webkit-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -moz-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -ms-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -o-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: linear-gradient(to bottom, #f1f2f3, #d5d7d9);
+    -webkit-border-radius: 22;
+    -moz-border-radius: 22;
+    border-radius: 0px;
+    border: solid #e4e7eb 1px;
+    text-shadow: 0px 0px 2px #057c91;
+    font-family: Georgia;
+    color: #057c91;
+    font-size: 16px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    width: 32%;
+    position:relative;
+    
+    
+    
+    
+}
+
+.prof-content {
+    
+    margin-top: 70%;
+    
+}
+
+.prof-menu {
+    position:relative;
+    margin-top: 25%;
+    
+}
+
+
+
 /* social networks */
 .socialNet {
     transition: right .25s ease-in-out;
