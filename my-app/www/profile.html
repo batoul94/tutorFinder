@@ -114,6 +114,7 @@
                                <div id="ProfileForm" style="display:none">
                                       <p>Tutor Profile: </p><div id="profileInfo"></div>
                                      <div id="myvideo" class="vidHolder" ></div>
+
                                      <p>Qualifications: </p><div id="qualifications"></div>
                                      <p>Subjects and Levels: </p><div id="subjectLevels"></div>
                                      <p>Prices: </p><div id="prices"></div>
@@ -199,6 +200,9 @@
 
                             $('#profileInfo').html(markers[0].profile);
                             $('#myvideo').html(markers[0].video_link);
+                            //$("#myvideo").attr("href", markers[0].video_link);
+
+
                             $('#qualifications').html(markers[0].qualification);
                             $('#subjectLevels').html(markers[0].subjects+"  "+markers[0].level);
                             $('#prices').html(markers[0].price);

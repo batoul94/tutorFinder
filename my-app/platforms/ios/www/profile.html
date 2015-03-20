@@ -113,7 +113,9 @@
                         <div class="prof-content">
                                <div id="ProfileForm" style="display:none">
                                       <p>Tutor Profile: </p><div id="profileInfo"></div>
-                                     <div id="myvideo" class="vidHolder" ></div>
+                                     <!--<div id="myvideo" class="vidHolder" ></div>-->
+                                     <a id="myvideo">Video Link</a>
+
                                      <p>Qualifications: </p><div id="qualifications"></div>
                                      <p>Subjects and Levels: </p><div id="subjectLevels"></div>
                                      <p>Prices: </p><div id="prices"></div>
@@ -198,7 +200,10 @@
                          }
 
                             $('#profileInfo').html(markers[0].profile);
-                            $('#myvideo').html(markers[0].video_link);
+                           // $('#myvideo').html(markers[0].video_link);
+                            $("#myvideo").attr("href", markers[0].video_link);
+
+
                             $('#qualifications').html(markers[0].qualification);
                             $('#subjectLevels').html(markers[0].subjects+"  "+markers[0].level);
                             $('#prices').html(markers[0].price);
@@ -225,7 +230,8 @@
                               });
 
                                   for(i = 0; i < reviewMarkers.length; i++){
-                                     $('#reviewsDisplay').append(reviewMarkers[i].id+": "+reviewMarkers[i].review_body+"<br />");
+                                    // $('#reviewsDisplay').append(reviewMarkers[i].id+": "+reviewMarkers[i].review_body+"<br />");
+                                    $('#reviewsDisplay').append(i+1+": "+reviewMarkers[i].review_body+"<br />");
 
                                   }
 
