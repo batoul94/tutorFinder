@@ -7,7 +7,7 @@ session_start();
    $tutor_id = $_SESSION['marker_IdSession'];
    
 
-$result =  $db->query("INSERT INTO tutor_reviews (tutor_id, review_body) VALUES ( '$tutor_id', '$review_body')");
+$result =  $db->query("INSERT INTO tutor_reviews (tutor_id, review_body) VALUES ('$tutor_id', '$review_body')");
   
 
 

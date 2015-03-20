@@ -52,8 +52,6 @@
        <div id="prof-wrapper">
 
 
-                     <div id="EditProfileLink" style="display:none" ><a href="editprofile.html">Edit Profile</a></div><br>
-
                     <h4><div id="fullname"></div></h4>
 
                     <div id="publicContact">You need to <a href="index.html">log in</a> to contact this tutor</div>
@@ -70,7 +68,7 @@
                     </div>
                  
                     <div class="boxed">
-                     <p> photo </p>
+                   
                      <img id="photo" height="100" width="100"/>
                     </div>
 
@@ -102,17 +100,29 @@
   
             
                     <div class="prof-menu">
-                              <input type="button" id="ctrlbtn1" name="ctrlbtn1"  value="Profile" onclick="showProfileInfo();"/>
-                              <input type="button" id="ctrlbtn2" name="ctrlbtn2"  value="Availability" onclick="showAvailability();"/> 
-                              <input type="button" id="ctrlbtn3" name="ctrlbtn3"  value="Reviews" onclick="showReviews();"/>
+                              <input class="m-buttons"  type="button" id="ctrlbtn1" name="ctrlbtn1"  value="Profile" onclick="showProfileInfo();"/>
+                              <input class="m-buttons"  type="button" id="ctrlbtn2" name="ctrlbtn2"  value="Availability" onclick="showAvailability();"/>
+                              <input class="m-buttons" type="button" id="ctrlbtn3" name="ctrlbtn3"  value="Reviews" onclick="showReviews();"/>
                               <br>
+                              
+                              
+                    </div>
+                    
+    </div>
 
+                        <div class="prof-content">
                                <div id="ProfileForm" style="display:none">
                                       <p>Tutor Profile: </p><div id="profileInfo"></div>
-                                     <div id="myvideo"></div>
+                                     <div id="myvideo" class="vidHolder" ></div>
                                      <p>Qualifications: </p><div id="qualifications"></div>
                                      <p>Subjects and Levels: </p><div id="subjectLevels"></div>
                                      <p>Prices: </p><div id="prices"></div>
+                                    
+                                    <FORM id="EditProfileLink" METHOD="LINK" ACTION="editprofile.html" style="display:none" >
+                                        <INPUT TYPE="submit" VALUE="Edit">
+                                            </FORM>
+
+                                     
                                </div>
 
 
@@ -134,15 +144,15 @@
                                          <p>Tutor Reviews: </p><div id="reviewsDisplay"></div>
 
                                </div>
-                     </div> 
+                        </div>
+                      
  
                   
 
                 
-            </div>
             
-            <div id="storage" style="display:none;"> </div>
-            <div id="displayed" class="prof-content"> </div>
+            
+            
     </div>
 
         <script>
@@ -178,12 +188,13 @@
 
                                 document.getElementById('ContactInfo').style.display="block";
                                 document.getElementById('publicContact').style.display="none"; 
-                                document.getElementById('addReview').style.display="block";
+                               // document.getElementById('addReview').style.display="block";
                          }
                          if(markers[0].this_isTutor != ''){
                                   document.getElementById('EditProfileLink').style.display="block";
                          }else{
                                    document.getElementById('EditProfileLink').style.display="none";
+                                   document.getElementById('addReview').style.display="block";
                          }
 
                             $('#profileInfo').html(markers[0].profile);

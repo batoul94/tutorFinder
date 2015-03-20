@@ -17,6 +17,7 @@ document.write("</div>");
                             document.write("<li><a href=\"help.html\">Help</a></li>");
                             document.write("<li><a href=\"about.html\">About Us</a></li>");
                             document.write("<li><a href=\"contact.html\">Contact Us</a></li>");
+                            document.write("<li><a href=\"profile.html\">My profile</a></li>");
                             document.write("</ul>");
                 document.write("</div>");
            document.write("</nav>");
