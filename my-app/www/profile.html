@@ -225,7 +225,8 @@
                               });
 
                                   for(i = 0; i < reviewMarkers.length; i++){
-                                     $('#reviewsDisplay').append(reviewMarkers[i].id+": "+reviewMarkers[i].review_body+"<br />");
+                                    // $('#reviewsDisplay').append(reviewMarkers[i].id+": "+reviewMarkers[i].review_body+"<br />");
+                                    $('#reviewsDisplay').append(i+1+": "+reviewMarkers[i].review_body+"<br />");
 
                                   }
 
