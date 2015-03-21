@@ -57,6 +57,7 @@ $(document).ready(function(){
                                                 $(".footer").toggleClass("open");
                                                 $(".header-main").toggleClass("open");
                                                 $(".socialNet").toggleClass("open");
+                                                $(".prof-top").toggleClass("open");
                                                 });
                   
                   $(".nav-main li:has(ul)").addClass("has-sub-nav").prepend("<div class=\"sub-toggle\"></div>");

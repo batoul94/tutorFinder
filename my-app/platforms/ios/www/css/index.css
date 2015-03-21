@@ -153,12 +153,24 @@ a {
 #prof-wrapper
 {
     position: fixed;
-    top:10%;
-    width: 100%;
-    background-color: white;
+    top:75px;
+    width: 97%;
+    
     
 }
 
+
+
+.prof-top{
+    transition: right .25s ease-in-out;
+    position: relative;
+    right: 0;
+    
+    overflow: hidden;
+     background-color: white;
+}
+
+.prof-top.open { right: 280px }
 
 
 
@@ -196,7 +208,7 @@ a {
     
     width: 8em;
     height: 8em;
-    margin-top: -15%;
+    margin-top: -8%;
     margin-left: 69%;
     float: right;
     
@@ -246,7 +258,7 @@ a {
 
 .prof-content {
     
-    margin-top: 70%;
+    margin-top: 75%;
     
 }
 
@@ -393,7 +405,7 @@ body {
     border-bottom: solid;
     border-width: 0.5px;
     border-color: #f1f2f3;
-    height: 80px;
+    height: 70px;
     padding-top: 15px;
 }
 

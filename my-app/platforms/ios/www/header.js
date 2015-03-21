@@ -14,7 +14,7 @@ document.write("</div>");
                     document.write("<ul>");
                         document.write("<li><a href=\"howTo.html\">How To Join Us</a></li>");
                         document.write("<li> <a href=\"verification.html\">Verification Process</a>");
-                            document.write("<li><a href=\"help.html\">Help</a></li>");
+                            
                             document.write("<li><a href=\"about.html\">About Us</a></li>");
                             document.write("<li><a href=\"contact.html\">Contact Us</a></li>");
                             document.write("<li><a href=\"profile.html\">My profile</a></li>");
