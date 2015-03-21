@@ -7,8 +7,6 @@
     $gender = $_POST['gender'];
     $bday = $_POST['bday'];
     $address = $_POST['address'];
-    $postcode = $_POST['postcode'];
-    $city = $_POST['city'];
     $usrtel = $_POST['usrtel'];
     $qualification = $_POST['qualification'];
     $profile = $_POST['profile'];
@@ -45,7 +43,7 @@
 
 
 
-$result =  $db->query("INSERT INTO markersdata (lng, lat, firstname, lastname, gender, bday, address, postcode, city, usrtel, qualification, profile, subjects, level, price, availability, img, video_link, email, password, validated) VALUES ('$lng', '$lat', '$firstname', '$lastname', '$gender', '$bday', '$address', '$postcode', '$city', '$usrtel', '$qualification', '$profile', '$subjects', '$level', '$price', '$availability', '$myimageLink', '$video_link', '$email','$password', 'no')");
+$result =  $db->query("INSERT INTO markersdata (lng, lat, firstname, lastname, gender, bday, address, usrtel, qualification, profile, subjects, level, price, availability, img, video_link, email, password, validated) VALUES ('$lng', '$lat', '$firstname', '$lastname', '$gender', '$bday', '$address', '$usrtel', '$qualification', '$profile', '$subjects', '$level', '$price', '$availability', '$myimageLink', '$video_link', '$email','$password', 'no')");
 
 
 

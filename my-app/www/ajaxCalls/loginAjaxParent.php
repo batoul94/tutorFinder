@@ -13,7 +13,7 @@
 
         if($count==1) {
 
-            $_SESSION['login_parent']=$row['id'];
+            $_SESSION['login_parent']=$row['parent_id'];
             echo $row['firstname'];
             
 

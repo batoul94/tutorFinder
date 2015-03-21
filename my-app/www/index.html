@@ -71,8 +71,13 @@
                            <option value="tutor">Tutor</option>
                            
                        </select>
-                     
-               
+
+
+              
+              <input type="button" id="logoutButton"  class="home-buttons" value="Log Out" onclick="myLogoutFunction();" style="display:none"/>
+
+              
+             
               
               <br><br><br>
               
@@ -110,9 +115,43 @@
         <script type="text/javascript">
             app.initialize();
         </script>
-        
+     
+
         <script>
-            function myFunction() {
+         $(document).ready(function() {
+               var markers = []; 
+               
+                     $.ajax({
+                                      url: 'http://localhost:8888/ajaxCalls/AjaxCheck.php',
+                                      dataType: 'json',
+                                       success: function(data){
+                                                    $.each(data, function(data, res){
+                                                          markers.push(res);
+                                                     });
+
+                                              
+                                            
+                                                 if(markers.length > 0) { // if user is logged in, display only logoutButton
+                                                    document.getElementById('logoutButton').style.display="block";
+                                                    document.getElementById('registerButton').style.display="none";  
+                                                    document.getElementById('loginButton').style.display="none"; 
+                                                   }else {
+
+                                                    document.getElementById('logoutButton').style.display="none";
+                                                    document.getElementById('registerButton').style.display="block";  
+                                                    document.getElementById('loginButton').style.display="block";  
+                                                   }
+                                          }
+                        }); //end of ajax call
+
+          
+          });   
+
+
+
+////////////////////////////////////////////////
+
+       function myFunction() {
                 var x = document.getElementById("registerButton").value;
                 var s = document.getElementById("loginButton").value;
                 if(x == "parent")
@@ -139,7 +178,24 @@
                     window.open("loginTutor.html");
                 }
             }
-        </script>
+
+
+            function myLogoutFunction(){
+                   $.ajax({type: "POST", url: 'http://localhost:8888/ajaxCalls/logoutAjax.php'}); //end of ajax call
+                    document.getElementById('logoutButton').style.display="none";
+                    document.getElementById('registerButton').style.display="block";  
+                    document.getElementById('loginButton').style.display="block";  
+                    $("#testDiv").attr('value','');
+                  //window.location.reload();
+
+
+            }
+
+
+
+         </script>
+
+
         
         
     </body>

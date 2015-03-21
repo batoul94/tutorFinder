@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> <!--import jquery library-->
+        <script src="source/jss/modernizr.js"></script>
+        <script src="ajax.js" type="text/javascript"></script>
+        <script src="prof.js" type="text/javascript"></script>
+        
+        
+        <title>My profile</title>
+    </head>
+    
+    <body class="main">
+       
+        
+        <!--HEADER-->
+        <script type="text/javascript" src="header.js"> </script>
+        <!--END HEADER-->
+
+        
+        
+        
+    <div class="content">
+        
+            
+       <div id="prof-wrapper">
+
+
+                    <h4><div id="fullname"></div></h4>
+
+                    <div id="publicContact">You need to <a href="index.html">log in</a> to contact this tutor</div>
+
+                    <div id="ContactInfo" style="display:none">
+                          <p> Contact </p>
+                          <FORM id="telForm" METHOD="CALL" >
+                             <INPUT class="contact-buttons" TYPE="submit" VALUE="CALL">
+                          </FORM>
+                        
+                          <FORM id="mailForm" METHOD="POST" >
+                             <INPUT class="contact-buttons" TYPE="submit" VALUE="EMAIL">
+                          </FORM>
+                    </div>
+                 
+                    <div class="boxed">
+                   
+                     <img id="photo" height="100" width="100"/>
+                    </div>
+
+                    <script type="text/javascript">
+                     /* these three functions are called by the three buttons below */
+                     function showProfileInfo(){
+                      document.getElementById('ProfileForm').style.display="block";
+                      document.getElementById('AvailabilityForm').style.display="none";  
+                      document.getElementById('ReviewsForm').style.display="none";  
+                    }
+
+                    function showAvailability(){
+                      document.getElementById('AvailabilityForm').style.display="block";
+                      document.getElementById('ProfileForm').style.display="none";  
+                      document.getElementById('ReviewsForm').style.display="none"; 
+                    }
+
+                    function showReviews(){
+                      document.getElementById('ReviewsForm').style.display="block";
+                      document.getElementById('ProfileForm').style.display="none";  
+                      document.getElementById('AvailabilityForm').style.display="none";  
+                    }
+
+                    function showAddReviewForm(){
+                      document.getElementById('AddReviewForm').style.display="block";
+                    }
+
+                    </script>
+  
+            
+                    <div class="prof-menu">
+                              <input class="m-buttons"  type="button" id="ctrlbtn1" name="ctrlbtn1"  value="Profile" onclick="showProfileInfo();"/>
+                              <input class="m-buttons"  type="button" id="ctrlbtn2" name="ctrlbtn2"  value="Availability" onclick="showAvailability();"/>
+                              <input class="m-buttons" type="button" id="ctrlbtn3" name="ctrlbtn3"  value="Reviews" onclick="showReviews();"/>
+                              <br>
+                              
+                              
+                    </div>
+                    
+    </div>
+
+                        <div class="prof-content">
+                               <div id="ProfileForm" style="display:none">
+                                      <p>Tutor Profile: </p><div id="profileInfo"></div>
+                                     <!--<div id="myvideo" class="vidHolder" ></div>-->
+                                     <a id="myvideo">Video Link</a>
+
+                                     <p>Qualifications: </p><div id="qualifications"></div>
+                                     <p>Subjects and Levels: </p><div id="subjectLevels"></div>
+                                     <p>Prices: </p><div id="prices"></div>
+                                    
+                                    <FORM id="EditProfileLink" METHOD="LINK" ACTION="editprofile.html" style="display:none" >
+                                        <INPUT TYPE="submit" VALUE="Edit">
+                                            </FORM>
+
+                                     
+                               </div>
+
+
+                               <div id="AvailabilityForm" style="display:none">
+                                      <p>Tutor Availability: </p><div id="availabilityInfo"></div>
+                               </div>
+
+
+                               <div id="ReviewsForm" style="display:none">
+
+                                         <br><br>
+                                        <input type="button" id="addReview"  value="Add a Review" onclick="showAddReviewForm();" style="display:none"/>
+                                                      <form id="AddReviewForm"  style="display:none">
+                                                         <input type="text" id="rev_body" /> <br>
+                                                          <div id="error"></div>
+                                                         <input type="submit" value="Submit Review">
+                                                      </form>
+
+                                         <p>Tutor Reviews: </p><div id="reviewsDisplay"></div>
+
+                               </div>
+                        </div>
+                      
+ 
+                  
+
+                
+            
+            
+            
+    </div>
+
+        <script>
+
+         $(document).ready(function() {
+
+          var markers = []; 
+
+                  $.ajax({
+                          url: 'http://localhost:8888/ajaxCalls/profileAjax.php',
+                          dataType: 'json',
+                          success: function(data){
+                              $.each(data, function(data, res){
+                                    markers.push(res);
+                              });
+
+                         $('#fullname').html(markers[0].firstname+"  "+markers[0].lastname);
+
+
+                         // var src1 = <%=Url.Content(Server.MapPath("ajaxCalls/imagesTree/image0.jpg"))%>;
+                         //var src1 = 'http://localhost:8888/ajaxCalls/'+markers[0].img;
+
+                         var src1 = 'ajaxCalls/'+markers[0].img;  // gets image from local file not server
+                         $('#photo').attr('src',src1);
+
+                         if(markers[0].usrtel != ''){
+                                var act1 = 'tel:+'+markers[0].usrtel;
+                                $('#telForm').attr('action',act1);
+
+
+                                var act2 = 'mailto:'+markers[0].email;
+                                $('#mailForm').attr('action',act2);
+
+                                document.getElementById('ContactInfo').style.display="block";
+                                document.getElementById('publicContact').style.display="none"; 
+                               // document.getElementById('addReview').style.display="block";
+                         }
+                         if(markers[0].this_isTutor != ''){
+                                  document.getElementById('EditProfileLink').style.display="block";
+                         }else{
+                                   document.getElementById('EditProfileLink').style.display="none";
+                                   document.getElementById('addReview').style.display="block";
+                         }
+
+                            $('#profileInfo').html(markers[0].profile);
+                           // $('#myvideo').html(markers[0].video_link);
+                            $("#myvideo").attr("href", markers[0].video_link);
+
+
+                            $('#qualifications').html(markers[0].qualification);
+                            $('#subjectLevels').html(markers[0].subjects+"  "+markers[0].level);
+                            $('#prices').html(markers[0].price);
+
+                             $('#availabilityInfo').html(markers[0].availability);
+
+
+                             }
+
+                        }); //end of ajax call 1
+
+
+
+            ///////////////////// second ajax call to get reviews
+
+            var reviewMarkers = [];
+
+            $.ajax({
+                          url: 'http://localhost:8888/ajaxCalls/reviewsDisplayAjax.php',
+                          dataType: 'json',
+                          success: function(data){
+                              $.each(data, function(data, res){
+                                    reviewMarkers.push(res);
+                              });
+
+                                  for(i = 0; i < reviewMarkers.length; i++){
+                                    // $('#reviewsDisplay').append(reviewMarkers[i].id+": "+reviewMarkers[i].review_body+"<br />");
+                                    $('#reviewsDisplay').append(i+1+": "+reviewMarkers[i].review_body+"<br />");
+
+                                  }
+
+
+                             }
+
+                        }); //end of ajax call 2
+
+
+       /////////////////////////////////////////// third ajax call to add a review
+
+             $('#AddReviewForm').submit(function(e){
+
+                        e.preventDefault();
+
+                        var review_body=  $("#rev_body").val(); 
+                        var dataString = 'review_body='+review_body;
+
+                         if(($.trim(review_body).length>0))
+                            {
+                                 $.ajax({
+                                      type: "POST",
+                                      url: 'http://localhost:8888/ajaxCalls/AddReviewAjax.php',
+                                      data: dataString,
+                                      success: function(data){
+                                                          if(!data) {
+                                                            window.location.href = "profile.html";
+                                                            // document.getElementById('AddReviewForm').style.display="block";
+                                                            // $("#error").html("Your review has been added!");
+                                                          }
+                                              }
+                                    }); //end of ajax call
+                                              
+                         }else{
+                             $("#error").html("<span style='color:#cc0000'>Your Review is too short!</span>");
+                         }
+
+                        
+
+
+               });
+
+           /////////////////////////////////// end of third ajax call
+            
+
+                      
+
+
+         });
+          </script>
+    
+        
+      
+        
+        
+        
+        <!--Footer-->
+        <script type="text/javascript" src="footer.js"> </script>
+        <!--END FOOTER-->
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
