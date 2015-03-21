@@ -350,7 +350,7 @@ body {
 }
 
 
-#inputTextAddress, #subject, #level, #email, #password{
+#inputTextAddress, #subject, #level{
 
    width:95.5%;
    height:25px;
@@ -366,3 +366,22 @@ form select{
    margin-left:7px;
 
 }
+
+
+#email, #password, #firstname, #lastname, #conPassword, #gender, #city, #postcode, #usrtel, #subjects, #price, #video_link{
+    
+    width:95.5%;
+    height:35px;
+    margin-top:5px;
+  
+}
+
+
+#address, #profile, #qualification, #availability
+{
+    width:95.5%;
+    
+    
+}
+
+

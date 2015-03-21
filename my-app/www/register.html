@@ -41,20 +41,25 @@
         <!--END HEADER-->
         
 
-        <div class="content">
+        <div class="content" style="margin-left: 7px">
             
-            <h1>Register</h1>
+            <h1>Register</h1><br>
             
          
          <form id="registerForm">
              
-             <input type="text" name="firstname" placeholder="First Name" id="firstname"/> <br>
-             <input type="text" name="lastname" placeholder="Last Name" id="lastname"/> <br>
-             <input type="text" name="email" placeholder="Email" id="email"/> <br>
-             <input type="password" name="password" placeholder="Password" id="password"/> <br>
-             <input type="password" name="conPassword" placeholder="Confirm Password" id="conPassword"/> <br>
+             <span> First name </span><br>
+             <input type="text" name="firstname" placeholder="First name" id="firstname"/> <br>
+             <span> Last name </span><br>
+             <input type="text" name="lastname" placeholder="Last name" id="lastname"/> <br>
+             <span> Email </span><br>
+             <input type="email" name="email" placeholder="e.g example@mail.com" id="email"/> <br>
+             <span> Password </span><br>
+             <input type="password" name="password" placeholder="e.g example231" id="password"/> <br>
+             <span> Confirm Password </span><br>
+             <input type="password" name="conPassword" placeholder="e.g example231" id="conPassword"/> <br>
              <div id="error"></div>
-             <input type="submit" value="Submit" id="btnReg">
+             <input type="submit" value="Submit" id="btnReg" class="home-buttons">
                  
          </form>
          
