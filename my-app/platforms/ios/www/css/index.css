@@ -204,15 +204,29 @@ a {
 
 .boxed {
     
-    position:relative;
+    position:fixed;
     
     width: 8em;
     height: 8em;
-    margin-top: -8%;
-    margin-left: 69%;
-    float: right;
+    top: 80px;
+    margin-left: 65%;
+    /*float: right;*/
+   
     
 }
+
+.prof-boxed{
+    transition: right .25s ease-in-out;
+    position: relative;
+    right: 0;
+    
+    overflow: hidden;
+   
+}
+
+.prof-boxed.open { right: 280px }
+
+
 
 
 
@@ -258,13 +272,13 @@ a {
 
 .prof-content {
     
-    margin-top: 75%;
+    margin-top: 80%;
     
 }
 
 .prof-menu {
     position:relative;
-    margin-top: 25%;
+    margin-top: 70px;
     
 }
 
