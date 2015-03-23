@@ -18,3 +18,12 @@ INSERT INTO tutor_reviews VALUES
 INSERT INTO tutor_reviews VALUES
 ('1','2','Thanks to Eneinta, my 16 year old girl got an A* in her Maths GCSE.');
 
+
+
+  
+  
+INSERT INTO parentReg VALUES
+('1', 'zoz','khara','bla@hotmail.com', 'bla');
+
+INSERT INTO parentReg VALUES
+('2', 'zoz','khara','bla', 'bla');

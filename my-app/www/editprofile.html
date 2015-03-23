@@ -51,21 +51,36 @@
           <form id="profileEditForm" >
                  
                 
-                 Full Address:<input type="text" name="address" id="address"/> <br>
+                 <span> Full Address: </span> <br>
+                     <textarea rows="4" type="text" name="address" placeholder="Full address" id="address"/></textarea> <br>
                
-                 Contact No:<input type="tel" name="usrtel"  id="usrtel" ><br>
-                 Qualification:<input type="text" name="qualification" id="qualification"/> <br>
-                 Profile:<textarea rows="4" type="text" name="profile" id="profile"></textarea> <br>
-                 Subjects:<input type="text" name="subjects" id="subjects"/> <br>
-                 Level:<input type="text" name="level" id="level"/> <br>
-                 Price:<input type="text" name="price" id="price"/> <br>
-                 Availability:<input type="text" name="availability" id="availability"/> <br>
+                 <span> Contact No: </span> <br>
+                     <input type="tel" name="usrtel"  placeholder="Contact No" id="usrtel" ><br>
+                         
+                 <span> Qualification: </span> <br>
+                     <input type="text" name="qualification" placeholder="Qualification" id="qualification"/> <br>
+                     
+                 <span> Profile: </span>
+                     <textarea rows="4" type="text" name="profile" placeholder="About you" id="profile"></textarea> <br>
+                     
+                 <span> Subjects: </span>
+                     <input type="text" name="subjects" placeholder="e.g. maths, english" id="subjects"/> <br>
+                     
+                 <span> Level: </span> <br>
+                     <input type="text" name="level" placeholder="e.g Key stage 3" id="level" style="margin-left: 0px; height:35px"/> <br>
+                     
+                 <span> Price: </span> <br>
+                     <input type="text" name="price" placeholder="Price per hour" id="price"/> <br>
+                     
+                 <span> Availability: </span> <br>
+                     <input type="text" name="availability" placeholder="Availability" id="availability"/> <br>
                  
-                 Video url:<input type="url" name="homepage" id="video_link"><br>
+                 <span> Video url: </span> <br>
+                     <input type="url" name="homepage" placeholder="e.g youtube.com" id="video_link"/><br>
 
                
              <div id="error"></div>
-             <input type="submit" value="Submit" id="btnEdit">
+             <input type="submit" value="Submit" id="btnEdit" class="home-buttons">
                  
          </form>
         

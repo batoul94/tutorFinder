@@ -266,9 +266,82 @@ a {
     position:relative;
     
     
+}
+
+
+
+.edit-buttons
+{
+    background: #f1f2f3;
+    background-image: -webkit-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -moz-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -ms-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -o-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: linear-gradient(to bottom, #f1f2f3, #d5d7d9);
+    -webkit-border-radius: 22;
+    -moz-border-radius: 22;
+    border-radius: 22px;
+    text-shadow: 0px 0px 2px #057c91;
+    font-family: Georgia;
+    color: #057c91;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+    border: solid #e4e7eb 2px;
+    text-decoration: none;
+    width: 20%;
+  
+  
+}
+
+
+.add-buttons
+{
+    background: #f1f2f3;
+    background-image: -webkit-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -moz-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -ms-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -o-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: linear-gradient(to bottom, #f1f2f3, #d5d7d9);
+    -webkit-border-radius: 22;
+    -moz-border-radius: 22;
+    border-radius: 22px;
+    text-shadow: 0px 0px 2px #057c91;
+    font-family: Georgia;
+    color: #057c91;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+    border: solid #e4e7eb 2px;
+    text-decoration: none;
+    width: 40%;
+    margin-top: 30%;
+    
+}
+
+
+.review-buttons
+{
+    background: #f1f2f3;
+    background-image: -webkit-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -moz-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -ms-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: -o-linear-gradient(top, #f1f2f3, #d5d7d9);
+    background-image: linear-gradient(to bottom, #f1f2f3, #d5d7d9);
+    -webkit-border-radius: 22;
+    -moz-border-radius: 22;
+    border-radius: 22px;
+    text-shadow: 0px 0px 2px #057c91;
+    font-family: Georgia;
+    color: #057c91;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+    border: solid #e4e7eb 2px;
+    text-decoration: none;
+    width: 40%;
     
     
 }
+
+
 
 .prof-content {
     
