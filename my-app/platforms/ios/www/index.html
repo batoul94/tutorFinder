@@ -73,7 +73,8 @@
                        </select>
 
 
-              
+               <input type="button" id="profileButton"  class="home-buttons" value="Profile" onclick="myProfileFunction();" style="display:none"/>
+
               <input type="button" id="logoutButton"  class="home-buttons" value="Log Out" onclick="myLogoutFunction();" style="display:none"/>
 
               
@@ -144,6 +145,28 @@
                                           }
                         }); //end of ajax call
 
+
+                 ///////////2nd ajax
+                 var markersP = []; 
+
+                                              $.ajax({
+                                                      url: 'http://localhost:8888/ajaxCalls/profileAjax.php',
+                                                      dataType: 'json',
+                                                      success: function(data){
+                                                                  $.each(data, function(data, res){
+                                                                        markersP.push(res);
+                                                                  });
+
+                                                             if(markersP[0].this_isTutor != ''){
+                                                                     document.getElementById('profileButton').style.display="block"; 
+                                                             }
+
+                                                        
+                                                         }
+
+                                                    });
+                 ///////////// 2nd ajax end
+
           
           });   
 
@@ -183,6 +206,7 @@
             function myLogoutFunction(){
                    $.ajax({type: "POST", url: 'http://localhost:8888/ajaxCalls/logoutAjax.php'}); //end of ajax call
                     document.getElementById('logoutButton').style.display="none";
+                    document.getElementById('profileButton').style.display="none";
                     document.getElementById('registerButton').style.display="block";  
                     document.getElementById('loginButton').style.display="block";  
                     $("#testDiv").attr('value','');
@@ -190,6 +214,10 @@
 
 
             }
+           function myProfileFunction(){
+            window.location.href = "profile.html";
+
+          }
 
 
 

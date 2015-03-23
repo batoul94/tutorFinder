@@ -18,33 +18,6 @@ document.write("</div>");
                             document.write("<li><a href=\"about.html\">About Us</a></li>");
                             document.write("<li><a href=\"contact.html\">Contact Us</a></li>");
 
-                                 $(document).ready(function() {
-
-                                   var markers = []; 
-
-                                              $.ajax({
-                                                      url: 'http://localhost:8888/ajaxCalls/profileAjax.php',
-                                                      dataType: 'json',
-                                                      success: function(data){
-                                                                  $.each(data, function(data, res){
-                                                                        markers.push(res);
-                                                                  });
-
-                                                             if(markers[0].this_isTutor != ''){
-                                                                     document.write("<li><a href=\"profile.html\">My profile</a></li>");
-                                                             }
-
-                                                        
-                                                         }
-
-                                                    }); //end of ajax call 1
-
-
-                                      });
-
-
-
-
                             document.write("</ul>");
                 document.write("</div>");
            document.write("</nav>");
