@@ -53,11 +53,13 @@
              <span> Last name </span><br>
              <input type="text" name="lastname" placeholder="Last name" id="lastname"/> <br>
              <span> Email </span><br>
-             <input type="email" name="email" placeholder="e.g example@mail.com" id="email"/> <br>
+             <input type="email" name="email" placeholder="e.g example@mail.com" id="email"  onfocusout="validateEmail()"/> <br>
+             <div id="emailErr" style="color:#cc0000"></div>
              <span> Password </span><br>
-             <input type="password" name="password" placeholder="e.g example231" id="password"/> <br>
+             <input type="password" name="password" placeholder="e.g example231" id="password" onfocusout="validatePassword()"/> <br>
              <span> Confirm Password </span><br>
-             <input type="password" name="conPassword" placeholder="e.g example231" id="conPassword"/> <br>
+             <input type="password" name="conPassword" placeholder="e.g example231" id="conPassword"/ onfocusout="validatePassword()"> <br>
+             <div id="passErr" style="color:#cc0000"></div>
              <div id="error"></div>
              <input type="submit" value="Submit" id="btnReg" class="home-buttons">
                  
@@ -77,12 +79,13 @@
                         var password=  $("#password").val(); 
                         var conPassword=  $("#conPassword").val(); 
                         var dataString = 'firstname='+firstname+'&lastname='+lastname+'&email='+email+'&password='+password;
-
+                        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                                       
                          if(
                             (password == conPassword)
                             && ($.trim(firstname).length>0)
                             && ($.trim(lastname).length>0)
-                            && ($.trim(email).length>0)
+                            && ($.trim(email).length>0) && (email.match(mailformat))
                             && ($.trim(password).length>0)
                            )
                             {
@@ -97,6 +100,7 @@
                                                         if(data) {
                                                         $("#error").html("<span style='color:#cc0000'>Error:</span>Your details didn't register! ");
                                                         } else {
+                                                            alert("You have successfully registered your details");
                                                             window.location.href = "login.html";
                                                          }
                                               }
@@ -119,7 +123,41 @@
          </script>
          
          
+         <!--validation-->
+         <script>
+             function validateEmail() {
+                 var x = document.getElementById("email");
+                 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                 if(x.value.match(mailformat))
+                 {
+                     document.getElementById("emailErr").innerHTML="";
+                 }
+                 else
+                 {
+                     
+                 document.getElementById("emailErr").innerHTML="Invalid email address";
+                 }
+             }
          
+         
+         
+         
+         function validatePassword() {
+             var a = document.getElementById("password");
+             var b = document.getElementById("conPassword");
+             
+
+             if(a.value.match(b.value))
+             {
+                 document.getElementById("passErr").innerHTML="";
+             }
+             else
+             {
+                 
+                 document.getElementById("passErr").innerHTML="Password did not match";
+             }
+         }
+         </script>
          
         </div>
     

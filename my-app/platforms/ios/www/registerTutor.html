@@ -67,7 +67,8 @@
                  <span> Full Address</span><br>
                  <textarea rows="4" type="text" name="address" placeholder="Full address" id="address"></textarea> <br>
                  <span> Contact Number </span><br>
-                 <input type="tel" name="usrtel"  id="usrtel" placeholder="e.g 02088888888"><br>
+                 <input type="tel" name="usrtel"  id="usrtel" placeholder="e.g 02088888888" onfocusout="validateTel()"><br>
+                     <div id="telErr" style="color:#cc0000"></div>
                  <span> Qualifications </span><br>
                  <textarea rows="4" type="text" name="qualification" placeholder="Qualifications" id="qualification"></textarea> <br>
                  <span> Profile </span><br>
@@ -86,11 +87,13 @@
                      <span> Video URL </span><br>
                  <input type="url" name="homepage" id="video_link" placeholder="e.g youtube.com/"><br>
                      <span> Email </span><br>
-                 <input type="email" name="email" placeholder="e.g example@mail.com" id="email"/> <br>
+                 <input type="email" name="email" placeholder="e.g example@mail.com" id="email" onfocusout="validateEmail()"/> <br>
+                 <div id="emailErr" style="color:#cc0000"></div>
                  <span> Password </span><br>
                  <input type="password" name="password" placeholder="e.g example231" id="password"/> <br>
                  <span> Confirm Password </span><br>
-                 <input type="password" name="conPassword" placeholder="e.g example231" id="conPassword"/> <br>
+                 <input type="password" name="conPassword" placeholder="e.g example231" id="conPassword" onfocusout="validatePassword()"/> <br>
+                 <div id="passErr" style="color:#cc0000"></div>
              <div id="error"></div>
              <input type="submit" value="Submit" id="btnReg" class="home-buttons">
                  
@@ -151,7 +154,11 @@
                 var video_link=  $("#video_link").val(); 
                 var email=  $("#email").val(); 
                 var password=  $("#password").val(); 
-                var conPassword=  $("#conPassword").val(); 
+                var conPassword=  $("#conPassword").val();
+                                     
+                    var mailformat =/^\w+([\.-]?\w+)*@\S+\.\ac.uk+/;
+
+                var mailformat = /^\w+([\.-]?\w+)*@\S+\.\ac.uk+/;
 
                 var mailformat = /^\w+([\.-]?\w+)*@\S+\.\ac.uk+/;
 
@@ -190,14 +197,22 @@
                             && ($.trim(gender).length>0)
                             && ($.trim(bday).length>0)
                             && ($.trim(address).length>0)
-                            && ($.trim(usrtel).length>0)
+                            && ($.trim(usrtel).length>=11)
                             && ($.trim(qualification).length>0)
                             && ($.trim(profile).length>0)
                             && ($.trim(subjects).length>0)
                             && ($.trim(level).length>0)
                             && ($.trim(price).length>0)
                             && ($.trim(availability).length>0)
+<<<<<<< HEAD
                             && ($.trim(email).length>0) && (email.match(mailformat))
+=======
+<<<<<<< HEAD
+                            && ($.trim(email).length>0)  && (email.match(mailformat))
+=======
+                            && ($.trim(email).length>0) && (email.match(mailformat))
+>>>>>>> d69c5239496b5808630747a91b8abbc3599f62ae
+>>>>>>> 50dc9ba5a7ced0f2219307eeb9b68fcb8f1071b6
                             && ($.trim(password).length>0)
                            )
                             {
@@ -216,7 +231,8 @@
                                                         if(php_script_response) {
                                                         $("#error").html("<span style='color:#cc0000'>Error:</span>Your details didn't register! ");
                                                         } else {
-                                                            window.location.href = "loginTutor.html";
+                                                            alert("You have successfully registered your details, one of the team will contact you within the next 10 working days to complete the verification process");
+                                                            window.location.href = "index.html";
                                                          }
                                             }
                                  });
@@ -224,7 +240,7 @@
 
 
                             }else{
-                             $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid details entered. ");
+                             $("#error").html("<span style='color:#cc0000'>Error:</span> Invalid details entered.");
                           }
 
 
@@ -239,8 +255,62 @@
  });
       
          </script>
-         
-         
+        
+        
+        <!--validation-->
+        <script>
+            function validateEmail() {
+                var x = document.getElementById("email");
+                var mailformat =/^\w+([\.-]?\w+)*@\S+\.\ac.uk+/;
+                if(x.value.match(mailformat))
+                {
+                    document.getElementById("emailErr").innerHTML="";
+                }
+                else
+                {
+                    
+                    document.getElementById("emailErr").innerHTML="You must register with a valid univeristy email";
+                }
+            }
+        
+        
+        
+        
+        function validatePassword() {
+            var a = document.getElementById("password");
+            var b = document.getElementById("conPassword");
+            
+            
+            if(a.value.match(b.value))
+            {
+                document.getElementById("passErr").innerHTML="";
+            }
+            else
+            {
+                
+                document.getElementById("passErr").innerHTML="Password did not match";
+            }
+        }
+        
+        
+        
+        function validateTel() {
+            var z = document.getElementById("usrtel");
+            
+            
+            
+            if(z.value.length >= 11)
+            {
+                document.getElementById("telErr").innerHTML="";
+            }
+            else
+            {
+                
+                document.getElementById("telErr").innerHTML="Contact number is short";
+            }
+        }
+        </script>
+        
         </div>
     
         <!--Footer-->
