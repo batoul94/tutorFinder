@@ -117,15 +117,15 @@
 
                         <div class="prof-content">
                                <div id="ProfileForm" style="display:none">
-                                      <p>Tutor Profile: </p><div id="profileInfo"></div>
-                                     <a id="myvideo" href="#">Video Link</a>
+                                      <h4>Tutor Profile: </h4><div id="profileInfo"></div> <br>
+                                     <a id="myvideo" href="#">Video Link</a> <br>
 
-                                     <p>Qualifications: </p><div id="qualifications"></div>
-                                     <p>Subjects and Levels: </p><div id="subjectLevels"></div>
-                                     <p>Prices: </p><div id="prices"></div>
+                                     <h4>Qualifications: </h4><div id="qualifications"></div> <br>
+                                     <h4>Subjects and Levels: </h4><div id="subjectLevels"></div> <br>
+                                     <h4>Price per hour: </h4> <div id="prices"></div> <br>
                                     
                                     <FORM id="EditProfileLink" METHOD="LINK" ACTION="editprofile.html" style="display:none" >
-                                        <INPUT TYPE="submit" VALUE="Edit">
+                                        <INPUT TYPE="submit" VALUE="Edit" class="edit-buttons">
                                             </FORM>
 
                                      
@@ -133,21 +133,25 @@
 
 
                                <div id="AvailabilityForm" style="display:none">
-                                      <p>Tutor Availability: </p><div id="availabilityInfo"></div>
+                                      <h4>Tutor Availability: </h4><div id="availabilityInfo"></div>
                                </div>
 
 
                                <div id="ReviewsForm" style="display:none">
+                                   
+                                   <h4>Tutor Reviews: </h4><div id="reviewsDisplay"></div>
 
-                                         <br><br>
-                                        <input type="button" id="addReview"  value="Add a Review" onclick="showAddReviewForm();" style="display:none"/>
+
+
+                                         <br>
+                                        <input class="add-buttons" type="button" id="addReview"  value="Add a Review" onclick="showAddReviewForm();" style="display:none"/>
                                                       <form id="AddReviewForm"  style="display:none">
-                                                         <input type="text" id="rev_body" /> <br>
+                                                         <textarea rows="4" type="text" id="rev_body"> </textarea> <br>
                                                           <div id="error"></div>
-                                                         <input type="submit" value="Submit Review">
+                                                         <input class="review-buttons" type="submit" value="Submit Review">
                                                       </form>
 
-                                         <p>Tutor Reviews: </p><div id="reviewsDisplay"></div>
+
 
                                </div>
                         </div>

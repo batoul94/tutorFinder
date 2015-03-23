@@ -158,6 +158,8 @@
                                      
                     var mailformat =/^\w+([\.-]?\w+)*@\S+\.\ac.uk+/;
 
+                var mailformat = /^\w+([\.-]?\w+)*@\S+\.\ac.uk+/;
+
                 var file_data = $('#img').prop('files')[0];
 
                  var form_data = new FormData();  
@@ -200,7 +202,11 @@
                             && ($.trim(level).length>0)
                             && ($.trim(price).length>0)
                             && ($.trim(availability).length>0)
+<<<<<<< HEAD
                             && ($.trim(email).length>0)  && (email.match(mailformat))
+=======
+                            && ($.trim(email).length>0) && (email.match(mailformat))
+>>>>>>> d69c5239496b5808630747a91b8abbc3599f62ae
                             && ($.trim(password).length>0)
                            )
                             {
