@@ -76,7 +76,7 @@
                  <span> Subjects to Teach</span><br>
                  <input type="text" name="subjects" placeholder="e.g maths, english" id="subjects"/> <br>
                  <span> Level </span><br>
-                 <input type="text" name="level" placeholder="e.g Key stage 3 " id="level" style="margin-left: 0px; height:35px"/> <br>
+                 <input type="text" name="level" placeholder="e.g ks1, ks2" id="level" style="margin-left: 0px; height:35px"/> <br>
                  <span> Price </span><br>
                  <input type="text" name="price" placeholder="Price per hour" id="price"/> <br>
                  <span> Availability </span><br>
@@ -202,18 +202,17 @@
                             && ($.trim(level).length>0)
                             && ($.trim(price).length>0)
                             && ($.trim(availability).length>0)
-<<<<<<< HEAD
+
                             && ($.trim(email).length>0)  && (email.match(mailformat))
-=======
                             && ($.trim(email).length>0) && (email.match(mailformat))
->>>>>>> d69c5239496b5808630747a91b8abbc3599f62ae
+
                             && ($.trim(password).length>0)
                            )
                             {
                                
 
                                 $.ajax({
-                                            url: 'http://localhost:8888/ajaxCalls/registerAjaxTutor.php',
+                                            url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/registerAjaxTutor.php',
                                             dataType: 'text',  // what to expect back from the PHP script, if anything
                                             cache: false,
                                             contentType: false,

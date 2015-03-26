@@ -46,7 +46,8 @@
 $result =  $db->query("INSERT INTO markersdata (lng, lat, firstname, lastname, gender, bday, address, usrtel, qualification, profile, subjects, level, price, availability, img, video_link, email, password, validated) VALUES ('$lng', '$lat', '$firstname', '$lastname', '$gender', '$bday', '$address', '$usrtel', '$qualification', '$profile', '$subjects', '$level', '$price', '$availability', '$myimageLink', '$video_link', '$email','$password', 'no')");
 
 
-
+    /* ----   THIS CODE WOULD ONLY WORK ON IGOR, AS THE APP IS RUNNNING ON LOCALHOST I HAVE COMMENTED IT OUT
+                SO WHENEVER A NEW TUTOR IS REGISTERED AN EMAIL WILL BE SENT TO US AS NOTIFICATION
     //email
 	$to = 'batoul_a94@hotmail.com';
     
@@ -77,4 +78,5 @@ $result =  $db->query("INSERT INTO markersdata (lng, lat, firstname, lastname, g
     
     
     mail($to,$email_subject,$email_body,$headers);
+     */
 ?>

@@ -46,7 +46,7 @@
         
         
         
-    <div class="content">
+    <div class="content" style="margin-left: 7px">
 
           <form id="profileEditForm" >
                  
@@ -97,7 +97,7 @@
               var oldLng;
 
                   $.ajax({
-                          url: 'http://localhost:8888/ajaxCalls/editProfileAjax.php',
+                          url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/editProfileAjax.php',
                           dataType: 'json',
                           success: function(data){
                               $.each(data, function(data, res){
@@ -202,7 +202,7 @@
 
 
                                 $.ajax({
-                                            url: 'http://localhost:8888/ajaxCalls/submitProfileEditAjax.php',
+                                            url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/submitProfileEditAjax.php',
                                             dataType: 'text',  // what to expect back from the PHP script, if anything
                                             cache: false,
                                             contentType: false,

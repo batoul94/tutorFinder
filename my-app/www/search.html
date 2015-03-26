@@ -48,7 +48,7 @@
 
              <form  id="thisform">
                  <input type="text"  id="inputTextAddress" placeholder="Post Code"/><br />
-                 <input type="text"  id="subject" placeholder="Subject"/><br />
+                 <input type="text"  id="subject" placeholder="Subject" style="text-transform: lowercase"/><br />
                   <input type="text"  id="level" placeholder="Level"/><br />
                 
                   <select id="price">
@@ -109,7 +109,7 @@
             geocoder = new google.maps.Geocoder();
                
             $.ajax({
-              url: 'http://localhost:8888/ajaxCalls/ajax.php',
+              url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/ajax.php',
               dataType: 'json',
               success: function(data){
                         $.each(data, function(data, res){
@@ -150,7 +150,7 @@
 
                                                                      $.ajax({
                                                                                   type: "POST",
-                                                                                  url: 'http://localhost:8888/ajaxCalls/markerIdSessionAjax.php',
+                                                                                  url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/markerIdSessionAjax.php',
                                                                                   data: dataString,
                                                                                   success: function(data){
                                                                                                   window.location.href = "profile.html";

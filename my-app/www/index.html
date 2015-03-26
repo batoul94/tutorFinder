@@ -91,7 +91,7 @@
                
                     <a href="#" onclick="window.open('https://twitter.com/tutor_finder', '_system', 'location=yes');"><img src="img/twitter-icon.png" alt="Twitter"/></a>
                
-                    <a href="#" onclick="window.open('http://instagram.com', '_system', 'location=yes');"><img src="img/insta3.png" alt="Instagram" /></a>
+                    <a href="#" onclick="window.open('http://i.instagram.com/tutorfinderapp/', '_system', 'location=yes');"><img src="img/insta3.png" alt="Instagram" /></a>
                 </div>
               </div>
                
@@ -123,7 +123,7 @@
                var markers = []; 
                
                      $.ajax({
-                                      url: 'http://localhost:8888/ajaxCalls/AjaxCheck.php',
+                                      url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/AjaxCheck.php',
                                       dataType: 'json',
                                        success: function(data){
                                                     $.each(data, function(data, res){
@@ -150,7 +150,7 @@
                  var markersP = []; 
 
                                               $.ajax({
-                                                      url: 'http://localhost:8888/ajaxCalls/profileAjax.php',
+                                                      url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/profileAjax.php',
                                                       dataType: 'json',
                                                       success: function(data){
                                                                   $.each(data, function(data, res){
@@ -204,7 +204,7 @@
 
 
             function myLogoutFunction(){
-                   $.ajax({type: "POST", url: 'http://localhost:8888/ajaxCalls/logoutAjax.php'}); //end of ajax call
+                   $.ajax({type: "POST", url: 'http://localhost:8888/tutorFinder/my-app/www/ajaxCalls/logoutAjax.php'}); //end of ajax call
                     document.getElementById('logoutButton').style.display="none";
                     document.getElementById('profileButton').style.display="none";
                     document.getElementById('registerButton').style.display="block";  
